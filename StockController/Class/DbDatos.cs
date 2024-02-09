@@ -109,37 +109,8 @@ namespace StockController.Class
                 }
             }
         }
-        public static bool DatosRepetidos(string nombreProcedimiento, List<Parametro> parametros)
-        {
-            try
-            {
-                AbrirConexion();
-
-                SqlCommand cmd = new SqlCommand(nombreProcedimiento, connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                foreach(var parametro in parametros)
-                {
-                    cmd.Parameters.AddWithValue(parametro.Nombre, parametro.Valor);
-                }
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                if(reader.HasRows)                 
-                    //Si el dato esta repetido
-                    return true;                
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
-            finally
-            {
-                CerrarConexion();
-            }
-        }
-        //aun no se ha aplicado
+        
+        //aun no se ha aplicado pero ya es funcional
         public static void ListarCombo(DataTable dataTable, string valor, string id, ComboBox comboBox)
         {
             try

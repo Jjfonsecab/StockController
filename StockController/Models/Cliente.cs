@@ -41,6 +41,12 @@ namespace StockController.Models
         {
             return DbDatos.Listar("Cliente_Listar");
         }
+        public static bool DatosRepetidos(string nombreProcedimiento, List<Parametro> parametros)
+        {
+            DataTable tabla = DbDatos.Listar(nombreProcedimiento, parametros);
+            
+            return tabla.Rows.Count > 0;
+        }
 
     }
 }

@@ -26,52 +26,35 @@ namespace StockController
         }
         bool Editar;
         int IdCliente;
+        bool Modificar;
 
         private void guardarBtn_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos(txtNombre, txtCiudad, txtDireccion)) return;
-
-            if (!VerificarExistencia()) return;
+            if (!ValidarCampos(txtNombre, txtCiudad, txtDireccion1)) return;
+            
+            if(!Modificar)
+                if (!VerificarExistencia()) return;
 
             if (!Guardar()) return;
 
             Finalizar();
-
         }
 
         private void eliminarBtn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dgvDatosCliente.SelectedRows.Count > 0)
-                {
-                    DataGridViewCell cell = dgvDatosCliente.CurrentRow.Cells["id_cliente"];
 
-                    // Verifica si la celda no es null y si su valor puede ser convertido a un entero
-                    if (cell != null && cell.Value != null && int.TryParse(cell.Value.ToString(), out int idCliente))
-                    {
-                        IdCliente = idCliente;
-                        // Otros códigos relacionados con la eliminación
-                        Eliminar();
-                    }
-                    else
-                    {
-                        // Muestra un mensaje si la celda o su valor no pueden ser convertidos a un entero
-                        MessageBox.Show("No se pudo obtener el ID del cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    // Muestra un mensaje si no hay filas seleccionadas
-                    MessageBox.Show("Selecciona una fila antes de eliminar.", "Fila no seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
+            if (dgvDatosCliente.SelectedRows.Count == 0 || dgvDatosCliente.CurrentRow == null)
             {
-                MessageBox.Show("Error al intentar eliminar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selecciona una fila antes de eliminar.");
+                return;
             }
-            finally
+
+            if (dgvDatosCliente.SelectedRows.Count > 0)
             {
+                DataGridViewCell cell = dgvDatosCliente.CurrentRow.Cells["id_cliente"];
+                int id_cliente = Convert.ToInt32(cell.Value);
+                IdCliente = id_cliente;
+                Eliminar();
                 Finalizar();
             }
 
@@ -85,7 +68,7 @@ namespace StockController
         {
             txtNombre.Text = "";
             txtCiudad.Text = "";
-            txtDireccion.Text = "";
+            txtDireccion1.Text = "";
             Editar = false;
         }
         private bool Guardar()
@@ -93,7 +76,7 @@ namespace StockController
             Cliente cliente = new Cliente()
             {
                 NombreCliente = txtNombre.Text,
-                Direccion = txtDireccion.Text,
+                Direccion = txtDireccion1.Text,
                 Ciudad = txtCiudad.Text,
                 IdCliente = IdCliente
             };
@@ -102,29 +85,20 @@ namespace StockController
         }
         private bool Eliminar()
         {
-            if (IdCliente > 0)
-            {
-                DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este cliente?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            int idCliente = IdCliente;
 
-                if (resultado == DialogResult.Yes)
-                    return Cliente.Eliminar(IdCliente);
-                else
-                    return false;
-            }
-            else
-            {
-                MessageBox.Show("Selecciona un cliente antes de eliminar.", "Cliente no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
+            return Cliente.Eliminar(idCliente);
+
         }
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IdCliente = Convert.ToInt32(dgvDatosCliente.CurrentRow.Cells["id_cliente"].Value);
             txtNombre.Text = dgvDatosCliente.CurrentRow.Cells["Nombre_cliente"].Value.ToString();
-            txtDireccion.Text = dgvDatosCliente.CurrentRow.Cells["Direccion"].Value.ToString();
+            txtDireccion1.Text = dgvDatosCliente.CurrentRow.Cells["Direccion"].Value.ToString();
             txtCiudad.Text = dgvDatosCliente.CurrentRow.Cells["Ciudad"].Value.ToString();
 
             Editar = true;
+            Modificar = true;
         }
         private void ListarGrid()
         {
@@ -150,10 +124,13 @@ namespace StockController
                 new Parametro("@Nombre_cliente", txtNombre.Text)
             };
 
-            // Nombre del procedimiento almacenado para verificar duplicados
-            string nombreProcedimientoVerificar = "Datos_Existentes_Cliente";
+            if (Cliente.DatosRepetidos("Cliente_VerificarExistencia", parametros))
+            {
+                MessageBox.Show("El cliente con el mismo nombre ya existe en la base de datos.", "Cliente Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
 
-            return !DbDatos.DatosRepetidos(nombreProcedimientoVerificar, parametros);
+            return true;
         }
         private void PersonalizarColumnasGrid()
         {
@@ -168,7 +145,7 @@ namespace StockController
         {
             txtNombre.CharacterCasing = CharacterCasing.Upper;
             txtCiudad.CharacterCasing = CharacterCasing.Upper;
-            txtDireccion.CharacterCasing = CharacterCasing.Upper;
+            txtDireccion1.CharacterCasing = CharacterCasing.Upper;
         }
 
 

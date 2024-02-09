@@ -37,7 +37,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.txtDireccion1 = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.guardarBtn = new System.Windows.Forms.Button();
             this.eliminarBtn = new System.Windows.Forms.Button();
@@ -80,11 +80,11 @@
             this.datosGb.Controls.Add(this.label4);
             this.datosGb.Controls.Add(this.label3);
             this.datosGb.Controls.Add(this.label1);
-            this.datosGb.Controls.Add(this.txtDireccion);
+            this.datosGb.Controls.Add(this.txtDireccion1);
             this.datosGb.Controls.Add(this.txtNombre);
             this.datosGb.Location = new System.Drawing.Point(40, 43);
             this.datosGb.Name = "datosGb";
-            this.datosGb.Size = new System.Drawing.Size(501, 175);
+            this.datosGb.Size = new System.Drawing.Size(535, 175);
             this.datosGb.TabIndex = 1;
             this.datosGb.TabStop = false;
             this.datosGb.Text = "Datos del Cliente: ";
@@ -123,12 +123,12 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Nombre :";
             // 
-            // txtDireccion
+            // txtDireccion1
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(209, 76);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(258, 26);
-            this.txtDireccion.TabIndex = 2;
+            this.txtDireccion1.Location = new System.Drawing.Point(209, 76);
+            this.txtDireccion1.Name = "txtDireccion1";
+            this.txtDireccion1.Size = new System.Drawing.Size(258, 26);
+            this.txtDireccion1.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -187,7 +187,7 @@
         private System.Windows.Forms.DataGridView dgvDatosCliente;
         private System.Windows.Forms.GroupBox datosGb;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.TextBox txtDireccion1;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
