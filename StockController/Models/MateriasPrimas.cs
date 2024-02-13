@@ -44,7 +44,17 @@ namespace StockController.Models
         }
         public static DataTable Listar()
         {
+            return DbDatos.Listar("MateriasPrimas_Stock");
+        }
+        public static DataTable ListarTodo()
+        {
             return DbDatos.Listar("MateriaPrima_Listar");
+        }
+        public static bool DatosRepetidos(string nombreProcedimiento, List<Parametro> parametros)
+        {
+            DataTable tabla = DbDatos.Listar(nombreProcedimiento, parametros);
+            return true;
+            //return tabla.Rows.Count > 0;
         }
     }
 }

@@ -74,6 +74,7 @@ namespace StockController.Class
         }
         public static DataTable Listar(string nombreProcedimiento, List<Parametro> parametros = null)
         {
+
             try
             {
                 AbrirConexion();

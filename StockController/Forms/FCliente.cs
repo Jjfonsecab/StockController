@@ -42,7 +42,6 @@ namespace StockController
 
         private void eliminarBtn_Click(object sender, EventArgs e)
         {
-
             if (dgvDatosCliente.SelectedRows.Count == 0 || dgvDatosCliente.CurrentRow == null)
             {
                 MessageBox.Show("Selecciona una fila antes de eliminar.");
@@ -139,15 +138,12 @@ namespace StockController
             //Por cuestion de orden en la base de datos, a continuacion se altera la columna Apellido_cliente para ubicarla al lado de Nombre_cliente
             //dgvDatosCliente.Columns["Apellido_cliente"].DisplayIndex = 2;
         }
-        //Con las siguientes configuraciones pondremos en mayuscula las entradas de los txtBox
-
         private void ToUpperText()
         {
             txtNombre.CharacterCasing = CharacterCasing.Upper;
             txtCiudad.CharacterCasing = CharacterCasing.Upper;
             txtDireccion1.CharacterCasing = CharacterCasing.Upper;
         }
-
 
     }
 }

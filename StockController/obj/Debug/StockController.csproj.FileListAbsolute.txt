@@ -9,3 +9,4 @@ C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\bin\Debug\
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.exe
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.pdb
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Forms.FMateriasPrimas.resources
+C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Forms.FCompras.resources
