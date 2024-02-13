@@ -39,6 +39,7 @@
             this.btnInicio = new System.Windows.Forms.PictureBox();
             this.btnTodosLosDatos = new System.Windows.Forms.PictureBox();
             this.dgvMateriasPrimas = new System.Windows.Forms.DataGridView();
+            this.btnStock = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
@@ -71,6 +72,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnStock);
             this.groupBox1.Controls.Add(this.btnCompras);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnBuscar);
@@ -159,11 +161,22 @@
             this.dgvMateriasPrimas.TabIndex = 8;
             this.dgvMateriasPrimas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMateriasPrimas_CellFormatting);
             // 
+            // btnStock
+            // 
+            this.btnStock.BackColor = System.Drawing.Color.Gold;
+            this.btnStock.Location = new System.Drawing.Point(60, 98);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(75, 42);
+            this.btnStock.TabIndex = 7;
+            this.btnStock.Text = "Stock";
+            this.btnStock.UseVisualStyleBackColor = false;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
+            // 
             // FMateriasPrimas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 632);
+            this.ClientSize = new System.Drawing.Size(1045, 632);
             this.Controls.Add(this.dgvMateriasPrimas);
             this.Controls.Add(this.btnTodosLosDatos);
             this.Controls.Add(this.btnInicio);
@@ -193,5 +206,6 @@
         private System.Windows.Forms.PictureBox btnInicio;
         private System.Windows.Forms.PictureBox btnTodosLosDatos;
         private System.Windows.Forms.DataGridView dgvMateriasPrimas;
+        private System.Windows.Forms.Button btnStock;
     }
 }

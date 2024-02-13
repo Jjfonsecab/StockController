@@ -110,7 +110,7 @@ namespace StockController.Class
                 }
             }
         }
-        
+         
         //aun no se ha aplicado pero ya es funcional
         public static void ListarCombo(DataTable dataTable, string valor, string id, ComboBox comboBox)
         {

@@ -31,6 +31,10 @@ namespace StockController.Forms
         {
             VerificarExistencia();            
         }
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            ListarGrid();
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -52,7 +56,31 @@ namespace StockController.Forms
                     txtBusqueda.Text = "Ingrese un proveedor...";
                     break;
             }
+        }        
+        private void dgvMateriasPrimas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            PersonalizarColumnasGrid();
         }
+        private void dgvMateriasPrimas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 2 && e.RowIndex >= 0 || e.ColumnIndex == 3 && e.RowIndex >= 0)
+            {
+                if (e.Value != null)
+                {
+                    // Formatear el valor como deseas, por ejemplo, con formato de moneda
+                    if (decimal.TryParse(e.Value.ToString(), out decimal precio))
+                    {
+                        e.Value = precio.ToString("N"); // "N" formatea como número con separadores de miles
+                        e.FormattingApplied = true;
+                    }
+                }
+            }
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ListarGrid();
+        }
+        //Metodos
         private void ListarGrid()
         {
             dgvMateriasPrimas.DataSource = MateriasPrimas.Listar();
@@ -68,9 +96,9 @@ namespace StockController.Forms
         private void ToUpperText()
         {
             txtBusqueda.CharacterCasing = CharacterCasing.Upper;
-            
+
         }
-        private void PersonalizarColumnasGrid()//no esta funcionando
+        private void PersonalizarColumnasGrid()
         {
             // Itera sobre todas las columnas del DataGridView
             foreach (DataGridViewColumn columna in dgvMateriasPrimas.Columns)
@@ -80,7 +108,7 @@ namespace StockController.Forms
                 {
 
                     // Puedes personalizar las columnas según su nombre o cualquier otra condición necesaria
-                    if(columna.Name == "TotalCantidad")
+                    if (columna.Name == "TotalCantidad")
                     {
                         dgvMateriasPrimas.Columns["TotalCantidad"].HeaderText = "Total";
                         DataGridViewCellStyle estiloCeldaNumerica = new DataGridViewCellStyle();
@@ -95,14 +123,14 @@ namespace StockController.Forms
                         columna.DefaultCellStyle = estiloCeldaNumerica;
                         DbDatos.OcultarIds(dgvMateriasPrimas);
                     }
-                    else if(columna.Name == "fecha_compra")
+                    else if (columna.Name == "fecha_compra")
                     {
                         dgvMateriasPrimas.Columns["fecha_compra"].HeaderText = "Fecha";
                         DbDatos.OcultarIds(dgvMateriasPrimas);
                     }
                 }
             }
-        }      
+        }
 
         private void VerificarExistencia()
         {
@@ -136,37 +164,19 @@ namespace StockController.Forms
                         // Muestra los resultados en el DataGridView
                         dgvMateriasPrimas.DataSource = resultado;
                         PersonalizarColumnasGrid();
-                    }                        
-                    else                    
-                        // No se encontraron resultados
-                        MessageBox.Show("Item no Encontrado.", "Item Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Warning);                    
-                }
-                else                
-                    MessageBox.Show("Por favor seleccione una opción de búsqueda válida.");               
-            }
-            else            
-                MessageBox.Show("Por favor seleccione una opción de búsqueda.");                
-            
-        }
-        private void dgvMateriasPrimas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            PersonalizarColumnasGrid();
-        }
-        private void dgvMateriasPrimas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == 2 && e.RowIndex >= 0 || e.ColumnIndex == 3 && e.RowIndex >= 0)
-            {
-                if (e.Value != null)
-                {
-                    // Formatear el valor como deseas, por ejemplo, con formato de moneda
-                    if (decimal.TryParse(e.Value.ToString(), out decimal precio))
-                    {
-                        e.Value = precio.ToString("N"); // "N" formatea como número con separadores de miles
-                        e.FormattingApplied = true;
                     }
+                    else
+                        // No se encontraron resultados
+                        MessageBox.Show("Item no Encontrado.", "Item Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else
+                    MessageBox.Show("Por favor seleccione una opción de búsqueda válida.");
             }
+            else
+                MessageBox.Show("Por favor seleccione una opción de búsqueda.");
+
         }
+
     }
 
 }

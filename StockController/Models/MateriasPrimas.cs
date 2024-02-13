@@ -56,5 +56,6 @@ namespace StockController.Models
             return true;
             //return tabla.Rows.Count > 0;
         }
+        
     }
 }
