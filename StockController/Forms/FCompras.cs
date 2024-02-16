@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace StockController.Forms
 {
@@ -18,6 +19,8 @@ namespace StockController.Forms
         {
             InitializeComponent();
             ToUpperText();
+
+
         }
         private void FMateriasPrimas_Load(object sender, EventArgs e)
         {
@@ -31,7 +34,7 @@ namespace StockController.Forms
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos(comboBoxNombre, txtPrecio, txtCantidad, comboBoxProveedor, txtFecha))
+            if (!ValidarCampos(txtNombre, txtPrecio, txtCantidad, txtProveedor, txtFecha))
                 return;
             if (Modificar)
             {
@@ -62,12 +65,11 @@ namespace StockController.Forms
         }
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             IdMateriasPrimas = Convert.ToInt32(dgvMateriasPrimas.CurrentRow.Cells["id_materia_prima"].Value);
-            comboBoxNombre.Text = dgvMateriasPrimas.CurrentRow.Cells["Nombre"].Value.ToString();
+            txtNombre.Text = dgvMateriasPrimas.CurrentRow.Cells["Nombre"].Value.ToString();
             txtPrecio.Text = dgvMateriasPrimas.CurrentRow.Cells["Precio"].Value.ToString();
             txtCantidad.Text = dgvMateriasPrimas.CurrentRow.Cells["Cantidad"].Value.ToString();
-            comboBoxProveedor.Text = dgvMateriasPrimas.CurrentRow.Cells["Proveedor"].Value.ToString();
+            txtPrecio.Text = dgvMateriasPrimas.CurrentRow.Cells["Proveedor"].Value.ToString();
 
             DateTime fechaOriginal = DateTime.Parse(dgvMateriasPrimas.CurrentRow.Cells["fecha_compra"].Value.ToString());
             txtFecha.Text = fechaOriginal.ToString("yyyy-MM-dd"); txtComentarios.Text = dgvMateriasPrimas.CurrentRow.Cells["Comentarios"].Value.ToString();
@@ -77,21 +79,51 @@ namespace StockController.Forms
             Editar = true;
             Modificar = true;
         }
-        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            FormatoPunto(txtPrecio, e);
+            string searchText = txtNombre.Text;
+
+            BuscarYMostrarResultados("RetornarMateriaPrimaPorNombre", txtNombre, listBox, "@NombreBuscado", "Nombre");
+
         }
-        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtProveedor_TextChanged(object sender, EventArgs e)
         {
-            FormatoPunto(txtCantidad, e);
+            string searchText = txtProveedor.Text;
+
+            BuscarYMostrarResultados("RetornarMateriaPrimaPorProveedor", txtProveedor, listBox, "@NombreBuscado", "Proveedor");
+
         }
-        private void comboBoxNombre_TextChanged(object sender, EventArgs e)
+
+        private System.Windows.Forms.TextBox ultimoTextBoxModificado = null;
+        private void txtNombre_KeyUp(object sender, KeyEventArgs e)
         {
-            comboBox_TextChanged(sender, e);
+            ultimoTextBoxModificado = txtNombre;
+            string searchText = txtNombre.Text;
+            BuscarYMostrarResultados("RetornarMateriaPrimaPorNombre", txtNombre, listBox, "@NombreBuscado", "Nombre");
+
         }
-        private void comboBoxProveedor_TextChanged(object sender, EventArgs e)
+        private void txtProveedor_KeyUp(object sender, KeyEventArgs e)
         {
-            comboBox_TextChanged(sender, e);
+            ultimoTextBoxModificado = txtProveedor;
+            string searchText = txtProveedor.Text;
+            BuscarYMostrarResultados("RetornarMateriaPrimaPorProveedor", txtProveedor, listBox, "@NombreBuscado", "Proveedor");
+
+        }
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox.SelectedIndex != -1 && ultimoTextBoxModificado != null)
+            {
+                // Obtiene el texto seleccionado en el ListBox
+                string selectedText = listBox.SelectedItem.ToString();
+
+                // Agrega el texto al TextBox correspondiente
+                ultimoTextBoxModificado.Text = selectedText;
+            }
+            else
+            {
+                // Depuración: Muestra un mensaje si no se pudo determinar el TextBox correspondiente
+                MessageBox.Show("No se pudo determinar el TextBox correspondiente.");
+            }
         }
 
         //Metodos
@@ -99,14 +131,14 @@ namespace StockController.Forms
         {
             MateriasPrimas materiasPrimas = new MateriasPrimas()
             {
-                Nombre = comboBoxNombre.Text,
+                Nombre = txtNombre.Text,
                 Precio = Convert.ToDecimal(txtPrecio.Text),
                 Cantidad = Convert.ToInt32(txtCantidad.Text),
-                Proveedor = comboBoxProveedor.Text,
+                Proveedor = txtProveedor.Text,
                 Fecha = DateTime.Parse(txtFecha.Text),
-                Comentarios = txtComentarios.Text
+                Comentarios = txtComentarios.Text,
+                IdMateriaPrima = IdMateriasPrimas
             };
-            //VerificarExistencia();
 
             return MateriasPrimas.Guardar(materiasPrimas, Editar);
         }
@@ -120,10 +152,10 @@ namespace StockController.Forms
                 MateriasPrimas materiasPrimasEditado = new MateriasPrimas()
                 {
                     IdMateriaPrima = IdMateriasPrimas,  // Asegúrate de tener el ID correcto
-                    Nombre = comboBoxNombre.Text,
+                    Nombre = txtNombre.Text,
                     Precio = Convert.ToDecimal(txtPrecio.Text),
                     Cantidad = Convert.ToInt32(txtCantidad.Text),
-                    Proveedor = comboBoxProveedor.Text,
+                    Proveedor = txtProveedor.Text,
                     Fecha = fechaOriginal,  // Utiliza la fecha original
                     Comentarios = txtComentarios.Text
                 };
@@ -160,26 +192,20 @@ namespace StockController.Forms
         }
         private void Linpiar()
         {
-            comboBoxNombre.Text = "";
+            txtNombre.Text = "";
             txtPrecio.Text = "";
             txtCantidad.Text = "";
-            comboBoxProveedor.Text = "";
+            txtProveedor.Text = "";
             txtComentarios.Text = "";
             Editar = false;
         }
-
         private bool ValidarCampos(params Control[] controles)
         {
             foreach (var control in controles)
             {
-                if (control is TextBox textBox && string.IsNullOrEmpty(textBox.Text))
+                if (control is System.Windows.Forms.TextBox textBox && string.IsNullOrEmpty(textBox.Text))
                 {
                     MessageBox.Show("Por favor, complete todos los campos antes de guardar.", "Campos Vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
-                else if (control is ComboBox comboBox && comboBox.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Por favor, selecciona un valor en todos los campos antes de guardar.", "Campos Vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
@@ -195,7 +221,11 @@ namespace StockController.Forms
             DbDatos.OcultarIds(dgvMateriasPrimas);
         }
         private void ToUpperText()//El upperText para los comboBox esta en comboBox_TextChanged
-        {            
+        {
+            txtNombre.CharacterCasing = CharacterCasing.Upper;
+            txtNombre.Click += TextBox_Click;
+            txtProveedor.CharacterCasing = CharacterCasing.Upper;
+            txtProveedor.Click += TextBox_Click;
             txtPrecio.CharacterCasing = CharacterCasing.Upper;
             txtPrecio.Click += TextBox_Click;
             txtCantidad.CharacterCasing = CharacterCasing.Upper;
@@ -203,107 +233,42 @@ namespace StockController.Forms
             txtFecha.CharacterCasing = CharacterCasing.Upper;
             txtComentarios.CharacterCasing = CharacterCasing.Upper;
         }
-        
-        private void FormatoPunto(TextBox textBox, KeyPressEventArgs e)
-        {
-            // Verificar si la tecla presionada es un número y no una tecla de control
-            if (char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                // Obtener el texto actual del TextBox
-                string currentText = textBox.Text.Replace(".", "");
-
-                // Agregar un punto después de cada tercer carácter
-                if (currentText.Length % 3 == 0 && currentText.Length > 0)
-                {
-                    txtPrecio.Text += ".";
-                    txtPrecio.SelectionStart = txtPrecio.Text.Length; // Mover el cursor al final
-                }
-            }
-        }               
-        private void ActualizarDatosComboBox(ComboBox comboBox, string parametroBusqueda)
-        {
-            try
-            {
-                // Llama al stored procedure para obtener datos relacionados
-                List<Parametro> parametros = new List<Parametro>
-                {
-                    new Parametro("@NombreBuscado", parametroBusqueda)
-                };
-                DataTable resultados;
-
-                // Decide qué stored procedure llamar según el ComboBox
-                if (comboBox == comboBoxNombre)
-                {
-                    resultados = DbDatos.Listar("RetornarMateriaPrimaPorNombre", parametros);
-                }
-                else if (comboBox == comboBoxProveedor)
-                {
-                    resultados = DbDatos.Listar("RetornarMateriaPrimaPorProveedor", parametros);
-                }
-                else
-                {
-                    // Manejo de error o lógica adicional si es necesario
-                    return;
-                }
-
-                // Muestra los resultados en el ComboBox (ajusta según tus necesidades)
-                if (resultados != null && resultados.Rows.Count > 0)
-                {
-                    comboBox.DataSource = resultados;
-                    comboBox.Visible = true;
-                    comboBox.DroppedDown = true; // Abre el ComboBox para mostrar los resultados
-
-                    if (comboBox == comboBoxNombre)
-                    {
-                        comboBox.DisplayMember = "Nombre";
-                    }
-                    else if (comboBox == comboBoxProveedor)
-                    {
-                        comboBox.DisplayMember = "Proveedor";
-                    }
-                    else
-                    {
-                        comboBox.Visible = false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al actualizar datos del ComboBox: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-        }
-        private void comboBox_TextChanged(object sender, EventArgs e)
-        {
-
-            if (sender is ComboBox comboBox)
-            {
-                comboBox.Text = comboBox.Text.ToUpper();
-                string nombreBuscado = comboBox.Text;
-                ActualizarDatosComboBox(comboBox, nombreBuscado);
-            }
-        }
         private void TextBox_Click(object sender, EventArgs e)
         {
-            if (sender is TextBox textBox)
+            if (sender is System.Windows.Forms.TextBox textBox)
             {
                 textBox.SelectAll();
             }
-        }
-        /*
-        private bool VerificarExistencia()
+        }               
+        private void BuscarYMostrarResultados(string nombreProcedimiento, System.Windows.Forms.TextBox textBox, ListBox listBox, string parametroNombre, string nombreColumna)
         {
+            // Obtén el texto del TextBox
+            string searchText = textBox.Text;
+
+            // Define los parámetros para el procedimiento almacenado
             List<Parametro> parametros = new List<Parametro>
             {
-                new Parametro("@Nombre", txtNombre.Text)
+                new Parametro(parametroNombre, searchText)
+                // Agrega otros parámetros según sea necesario
             };
 
-            if (MateriasPrimas.DatosRepetidos("MateriaPrima_VerificarExistencia", parametros))
+            // Llama al método Listar para obtener los resultados de la consulta
+            DataTable result = DbDatos.Listar(nombreProcedimiento, parametros);
+
+            // Limpia el ListBox antes de agregar nuevos elementos
+            listBox.Items.Clear();
+
+            // Verifica si hay resultados y llena el ListBox
+            if (result != null && result.Rows.Count > 0)
             {
-                MessageBox.Show("Ya existe una materia prima con el mismo nombre en la base de datos.", "Materia Prima Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                foreach (DataRow row in result.Rows)
+                {
+                    // Agrega los elementos al ListBox
+                    listBox.Items.Add(row[nombreColumna].ToString());
+                }
             }
-            return true;
-        }*/
+
+        }
+        
     }
 }

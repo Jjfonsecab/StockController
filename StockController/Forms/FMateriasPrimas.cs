@@ -24,8 +24,7 @@ namespace StockController.Forms
 
         private void FMateriasPrimas_Load(object sender, EventArgs e)
         {
-            ListarGrid();
-            
+            ListarGrid();            
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -37,7 +36,6 @@ namespace StockController.Forms
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
             ListarTodo();
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,18 +61,7 @@ namespace StockController.Forms
         }
         private void dgvMateriasPrimas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 2 && e.RowIndex >= 0 || e.ColumnIndex == 3 && e.RowIndex >= 0)
-            {
-                if (e.Value != null)
-                {
-                    // Formatear el valor como deseas, por ejemplo, con formato de moneda
-                    if (decimal.TryParse(e.Value.ToString(), out decimal precio))
-                    {
-                        e.Value = precio.ToString("N"); // "N" formatea como número con separadores de miles
-                        e.FormattingApplied = true;
-                    }
-                }
-            }
+            
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -96,7 +83,7 @@ namespace StockController.Forms
         private void ToUpperText()
         {
             txtBusqueda.CharacterCasing = CharacterCasing.Upper;
-
+            txtBusqueda.Click += TextBox_Click;
         }
         private void PersonalizarColumnasGrid()
         {
@@ -112,14 +99,17 @@ namespace StockController.Forms
                     {
                         dgvMateriasPrimas.Columns["TotalCantidad"].HeaderText = "Total";
                         DataGridViewCellStyle estiloCeldaNumerica = new DataGridViewCellStyle();
-                        estiloCeldaNumerica.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinea a la derecha
+                        estiloCeldaNumerica.Alignment = DataGridViewContentAlignment.MiddleRight;// Alinea a la derecha
+                        estiloCeldaNumerica.Format = "N0";
                         columna.DefaultCellStyle = estiloCeldaNumerica;
                         DbDatos.OcultarIds(dgvMateriasPrimas);
+                       
                     }
                     else if (columna.Name == "Precio" || columna.Name == "Cantidad")
                     {
                         DataGridViewCellStyle estiloCeldaNumerica = new DataGridViewCellStyle();
                         estiloCeldaNumerica.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinea a la derecha
+                        estiloCeldaNumerica.Format = "N0";
                         columna.DefaultCellStyle = estiloCeldaNumerica;
                         DbDatos.OcultarIds(dgvMateriasPrimas);
                     }
@@ -175,6 +165,13 @@ namespace StockController.Forms
             else
                 MessageBox.Show("Por favor seleccione una opción de búsqueda.");
 
+        }
+        private void TextBox_Click(object sender, EventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                textBox.SelectAll();
+            }
         }
 
     }

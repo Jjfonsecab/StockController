@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnStock = new System.Windows.Forms.Button();
             this.btnCompras = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.PictureBox();
@@ -39,7 +40,6 @@
             this.btnInicio = new System.Windows.Forms.PictureBox();
             this.btnTodosLosDatos = new System.Windows.Forms.PictureBox();
             this.dgvMateriasPrimas = new System.Windows.Forms.DataGridView();
-            this.btnStock = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
@@ -79,12 +79,23 @@
             this.groupBox1.Controls.Add(this.txtBusqueda);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBox);
-            this.groupBox1.Location = new System.Drawing.Point(200, 52);
+            this.groupBox1.Location = new System.Drawing.Point(243, 51);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(775, 146);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos : ";
+            // 
+            // btnStock
+            // 
+            this.btnStock.BackColor = System.Drawing.Color.Gold;
+            this.btnStock.Location = new System.Drawing.Point(60, 98);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(75, 42);
+            this.btnStock.TabIndex = 7;
+            this.btnStock.Text = "Stock";
+            this.btnStock.UseVisualStyleBackColor = false;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
             // btnCompras
             // 
@@ -140,7 +151,7 @@
             // 
             this.btnTodosLosDatos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTodosLosDatos.Image = ((System.Drawing.Image)(resources.GetObject("btnTodosLosDatos.Image")));
-            this.btnTodosLosDatos.Location = new System.Drawing.Point(103, 133);
+            this.btnTodosLosDatos.Location = new System.Drawing.Point(128, 143);
             this.btnTodosLosDatos.Name = "btnTodosLosDatos";
             this.btnTodosLosDatos.Size = new System.Drawing.Size(43, 40);
             this.btnTodosLosDatos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -157,26 +168,15 @@
             this.dgvMateriasPrimas.Name = "dgvMateriasPrimas";
             this.dgvMateriasPrimas.RowHeadersWidth = 62;
             this.dgvMateriasPrimas.RowTemplate.Height = 28;
-            this.dgvMateriasPrimas.Size = new System.Drawing.Size(975, 400);
+            this.dgvMateriasPrimas.Size = new System.Drawing.Size(1003, 400);
             this.dgvMateriasPrimas.TabIndex = 8;
             this.dgvMateriasPrimas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMateriasPrimas_CellFormatting);
-            // 
-            // btnStock
-            // 
-            this.btnStock.BackColor = System.Drawing.Color.Gold;
-            this.btnStock.Location = new System.Drawing.Point(60, 98);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(75, 42);
-            this.btnStock.TabIndex = 7;
-            this.btnStock.Text = "Stock";
-            this.btnStock.UseVisualStyleBackColor = false;
-            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
             // 
             // FMateriasPrimas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 632);
+            this.ClientSize = new System.Drawing.Size(1089, 632);
             this.Controls.Add(this.dgvMateriasPrimas);
             this.Controls.Add(this.btnTodosLosDatos);
             this.Controls.Add(this.btnInicio);
