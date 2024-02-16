@@ -19,18 +19,19 @@ namespace StockController.Forms
             InitializeComponent();
             ToUpperText();
         }
-
         private void FProductos_Load(object sender, EventArgs e)
         {
             ListarTodo();
+            PersonalizarColumnasGrid();
         }
 
         bool Editar;
         int IdProductos;
         bool Modificar;
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos(txtNombre, txtPrecio, txtCantidad, txtDescripcion, txtTiempo))
+            if (!ValidarCampos(txtNombre, txtReferencia,txtPrecio, txtCantidad, txtDescripcion, txtTiempo))
                 return;
             if (Modificar)
             {
@@ -67,37 +68,65 @@ namespace StockController.Forms
         {
             FormatoPunto(txtCantidad, e);
         }
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IdProductos = Convert.ToInt32(dgvProductos.CurrentRow.Cells["id_producto"].Value);
+            txtNombre.Text = dgvProductos.CurrentRow.Cells["Nombre"].Value.ToString();
+            txtPrecio.Text = dgvProductos.CurrentRow.Cells["Precio_final"].Value.ToString();
+            txtCantidad.Text = dgvProductos.CurrentRow.Cells["Cantidad"].Value.ToString();
+            txtDescripcion.Text = dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString();
+            txtTiempo.Text = dgvProductos.CurrentRow.Cells["tiempo_produccion"].Value.ToString();
+
+            Editar = true;
+            Modificar = true;
+        }
         private void btnInicio_Click(object sender, EventArgs e)
         {
 
         }
-        /*
-        private void comboBoxNombre_TextChanged(object sender, EventArgs e)
-        {
-            comboBox_TextChanged(sender, e);
-        }*/
 
-        //Methods
-        private bool Guardar()
+        private System.Windows.Forms.TextBox ultimoTextBoxModificado = null;
+        private void txtNombre_KeyUp(object sender, KeyEventArgs e)
         {
-            if (ValidarCampos())
+            ultimoTextBoxModificado = txtNombre;
+            string searchText = txtNombre.Text;
+            BuscarYMostrarResultados("[RetornarProductoPorNombre]", txtNombre, listBox, "@NombreBuscado", "Nombre");
+        }
+        private void txtReferencia_KeyUp(object sender, KeyEventArgs e)
+        {
+            ultimoTextBoxModificado = txtReferencia;
+            string searchText = txtReferencia.Text;
+            BuscarYMostrarResultados("RetornarProductoPorReferencia", txtReferencia, listBox, "@NombreBuscado", "Referencia");
+        }
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox.SelectedIndex != -1 && ultimoTextBoxModificado != null)
             {
-                Productos productos = new Productos()
-                {
-                    Nombre = txtNombre.Text,
-                    Precio = Convert.ToDecimal(txtPrecio.Text),
-                    Cantidad = Convert.ToInt32(txtCantidad.Text),
-                    Descripcion = txtDescripcion.Text,
-                    TiempoProduccion = txtTiempo.Text,
+                string selectedText = listBox.SelectedItem.ToString();
 
-                };
-                return Productos.Guardar(productos, Editar);
+                ultimoTextBoxModificado.Text = selectedText;
             }
             else
             {
-                MessageBox.Show("Complete los campos antes de guardar .", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                MessageBox.Show("Seleccione un dato valido.");
             }
+        }
+        //Methods
+        private bool Guardar()
+        {
+            Productos productos = new Productos()
+            {
+                Nombre = txtNombre.Text,
+                Referencia = txtReferencia.Text,
+                Precio = Convert.ToDecimal(txtPrecio.Text),
+                Cantidad = Convert.ToInt32(txtCantidad.Text),
+                Descripcion = txtDescripcion.Text,
+                TiempoProduccion = txtTiempo.Text,
+                IdProducto = IdProductos
+
+            };
+            return Productos.Guardar(productos, Editar);
+
         }
         private bool GuardarEditado()
         {
@@ -106,8 +135,9 @@ namespace StockController.Forms
 
                 Productos productos = new Productos()
                 {
-                    IdProducto = IdProductos,  // Asegúrate de tener el ID correcto
+                    IdProducto = IdProductos,
                     Nombre = txtNombre.Text,
+                    Referencia = txtReferencia.Text,
                     Precio = Convert.ToDecimal(txtPrecio.Text),
                     Cantidad = Convert.ToInt32(txtCantidad.Text),
                     Descripcion = txtDescripcion.Text,
@@ -130,7 +160,7 @@ namespace StockController.Forms
                 DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este Producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (resultado == DialogResult.Yes)
-                    return MateriasPrimas.Eliminar(IdProductos);
+                    return Productos.Eliminar(IdProductos);
                 else
                     return false;
             }
@@ -163,7 +193,7 @@ namespace StockController.Forms
                     MessageBox.Show("Por favor, complete todos los campos antes de guardar.", "Campos Vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                
+
             }
             return true;
         }
@@ -176,6 +206,8 @@ namespace StockController.Forms
         {
             txtNombre.CharacterCasing = CharacterCasing.Upper;
             txtNombre.Click += TextBox_Click;
+            txtReferencia.CharacterCasing = CharacterCasing.Upper;
+            txtReferencia.Click += TextBox_Click;
             txtPrecio.CharacterCasing = CharacterCasing.Upper;
             txtPrecio.Click += TextBox_Click;
             txtCantidad.CharacterCasing = CharacterCasing.Upper;
@@ -190,18 +222,6 @@ namespace StockController.Forms
             {
                 textBox.SelectAll();
             }
-        }
-        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            IdProductos = Convert.ToInt32(dgvProductos.CurrentRow.Cells["id_producto"].Value);
-            txtNombre.Text = dgvProductos.CurrentRow.Cells["Nombre"].Value.ToString();
-            txtPrecio.Text = dgvProductos.CurrentRow.Cells["Precio_final"].Value.ToString();
-            txtCantidad.Text = dgvProductos.CurrentRow.Cells["Cantidad"].Value.ToString();
-            txtDescripcion.Text = dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString();
-            txtTiempo.Text = dgvProductos.CurrentRow.Cells["tiempo_produccion"].Value.ToString();
-
-            Editar = true;
-            Modificar = true;
         }
         private void FormatoPunto(TextBox textBox, KeyPressEventArgs e)
         {
@@ -219,57 +239,57 @@ namespace StockController.Forms
                 }
             }
         }
-        /*
-        private void ActualizarDatosComboBox(ComboBox comboBox, string parametroBusqueda)//toDo
+        private void BuscarYMostrarResultados(string nombreProcedimiento, System.Windows.Forms.TextBox textBox, ListBox listBox, string parametroNombre, string nombreColumna)
         {
-            try
+            string searchText = textBox.Text;
+
+            List<Parametro> parametros = new List<Parametro>
             {
-                // Llama al stored procedure para obtener datos relacionados
-                List<Parametro> parametros = new List<Parametro>
-                {
-                    new Parametro("@NombreBuscado", parametroBusqueda)
-                };
-                DataTable resultados;
+                new Parametro(parametroNombre, searchText)
+            };
 
-                // Decide qué stored procedure llamar según el ComboBox
-                if (comboBox == comboBoxNombre)
-                {
-                    resultados = DbDatos.Listar("RetornarProductoPorNombre", parametros);
-                }
-                else
-                    return;                
+            DataTable result = DbDatos.Listar(nombreProcedimiento, parametros);
 
-                // Muestra los resultados en el ComboBox (ajusta según tus necesidades)
-                if (resultados != null && resultados.Rows.Count > 0)
+            listBox.Items.Clear();
+                        
+            if (result != null && result.Rows.Count > 0)
+            {
+                foreach (DataRow row in result.Rows)
                 {
-                    comboBox.DataSource = resultados;
-                    comboBox.Visible = true;
-                    comboBox.DroppedDown = true; // Abre el ComboBox para mostrar los resultados
-
-                    if (comboBox == comboBoxNombre)
-                    {
-                        comboBox.DisplayMember = "NombreProducto";
-                    }
-                    else                    
-                        comboBox.Visible = false;                    
+                    listBox.Items.Add(row[nombreColumna].ToString());
                 }
             }
-            catch (Exception ex)
+
+        }
+        private void PersonalizarColumnasGrid()
+        {
+            // Itera sobre todas las columnas del DataGridView
+            foreach (DataGridViewColumn columna in dgvProductos.Columns)
             {
-                MessageBox.Show($"Error al actualizar datos del ComboBox: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Asegúrate de que la columna tenga un nombre
+                if (!string.IsNullOrEmpty(columna.Name))
+                {
+
+                    // Puedes personalizar las columnas según su nombre o cualquier otra condición necesaria
+                    if (columna.Name == "Precio_final" || columna.Name == "Cantidad")
+                    {
+                        dgvProductos.Columns["Precio_final"].HeaderText = "Precio";
+                        DataGridViewCellStyle estiloCeldaNumerica = new DataGridViewCellStyle();
+                        estiloCeldaNumerica.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinea a la derecha
+                        estiloCeldaNumerica.Format = "N0";
+                        columna.DefaultCellStyle = estiloCeldaNumerica;
+                        DbDatos.OcultarIds(dgvProductos);
+                    }
+                    else if (columna.Name == "tiempo_produccion")
+                    {
+                        dgvProductos.Columns["tiempo_produccion"].HeaderText = "Tiempo";
+                        DbDatos.OcultarIds(dgvProductos);
+                    }
+                    else if (columna.Name == "Referencia")                    
+                        dgvProductos.Columns["Referencia"].DisplayIndex = 2;
+                    
+                }
             }
         }
-        private void comboBox_TextChanged(object sender, EventArgs e)
-        {
-            if (sender is ComboBox comboBox)
-            {
-                Console.WriteLine("TextChanged Event Fired");
-                comboBox.Text = comboBox.Text.ToUpper();
-                string nombreBuscado = comboBox.Text;
-                ActualizarDatosComboBox(comboBox, nombreBuscado);
-            }
-        }*/
-
-        
     }
 }

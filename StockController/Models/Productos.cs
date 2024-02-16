@@ -12,10 +12,11 @@ namespace StockController.Models
     {
         public int IdProducto { get; set; }
         public string Nombre { get; set; }
+        public string Referencia { get; set; }
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
         public string Descripcion { get; set; }
-        public string TiempoProduccion { get; set;}//Ojo, verificar si el time span funciona
+        public string TiempoProduccion { get; set;}
 
         public static bool Guardar(Productos productos, bool editar)
         {
@@ -27,6 +28,7 @@ namespace StockController.Models
                 new Parametro("@Precio_final", productos.Precio),
                 new Parametro("@Descripcion", productos.Descripcion),
                 new Parametro("@tiempo_produccion",  productos.TiempoProduccion),
+                new Parametro("@Referencia", productos.Referencia),
                 new Parametro("@Editar", editar)
             };
 

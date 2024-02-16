@@ -17,7 +17,7 @@ namespace StockController
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FCompras());
+            Application.Run(new FProductos());
         }
     }
 }

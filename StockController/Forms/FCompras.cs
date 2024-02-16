@@ -20,7 +20,6 @@ namespace StockController.Forms
             InitializeComponent();
             ToUpperText();
 
-
         }
         private void FMateriasPrimas_Load(object sender, EventArgs e)
         {
@@ -219,6 +218,7 @@ namespace StockController.Forms
         {
             dgvMateriasPrimas.DataSource = MateriasPrimas.ListarTodo();
             DbDatos.OcultarIds(dgvMateriasPrimas);
+            PersonalizarColumnasGrid();
         }
         private void ToUpperText()//El upperText para los comboBox esta en comboBox_TextChanged
         {
@@ -267,8 +267,32 @@ namespace StockController.Forms
                     listBox.Items.Add(row[nombreColumna].ToString());
                 }
             }
-
         }
-        
+        private void PersonalizarColumnasGrid()
+        {
+            // Itera sobre todas las columnas del DataGridView
+            foreach (DataGridViewColumn columna in dgvMateriasPrimas.Columns)
+            {
+                // Asegúrate de que la columna tenga un nombre
+                if (!string.IsNullOrEmpty(columna.Name))
+                {
+
+                    // Puedes personalizar las columnas según su nombre o cualquier otra condición necesaria
+                    if (columna.Name == "Precio" || columna.Name == "Cantidad")
+                    {
+                        DataGridViewCellStyle estiloCeldaNumerica = new DataGridViewCellStyle();
+                        estiloCeldaNumerica.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinea a la derecha
+                        estiloCeldaNumerica.Format = "N0";
+                        columna.DefaultCellStyle = estiloCeldaNumerica;
+                        DbDatos.OcultarIds(dgvMateriasPrimas);
+                    }
+                    else if (columna.Name == "fecha_compra")
+                    {
+                        dgvMateriasPrimas.Columns["fecha_compra"].HeaderText = "Fecha";
+                        DbDatos.OcultarIds(dgvMateriasPrimas);
+                    }
+                }
+            }
+        }
     }
 }

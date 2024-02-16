@@ -170,7 +170,6 @@
             this.dgvMateriasPrimas.RowTemplate.Height = 28;
             this.dgvMateriasPrimas.Size = new System.Drawing.Size(1003, 400);
             this.dgvMateriasPrimas.TabIndex = 8;
-            this.dgvMateriasPrimas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMateriasPrimas_CellFormatting);
             // 
             // FMateriasPrimas
             // 

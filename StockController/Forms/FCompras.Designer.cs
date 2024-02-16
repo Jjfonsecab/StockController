@@ -214,7 +214,7 @@
             this.dgvMateriasPrimas.Name = "dgvMateriasPrimas";
             this.dgvMateriasPrimas.RowHeadersWidth = 62;
             this.dgvMateriasPrimas.RowTemplate.Height = 28;
-            this.dgvMateriasPrimas.Size = new System.Drawing.Size(1107, 174);
+            this.dgvMateriasPrimas.Size = new System.Drawing.Size(1107, 249);
             this.dgvMateriasPrimas.TabIndex = 6;
             // 
             // contextMenuStrip1
@@ -269,7 +269,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 550);
+            this.ClientSize = new System.Drawing.Size(1169, 637);
             this.Controls.Add(this.btnInicio);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);

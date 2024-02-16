@@ -55,18 +55,7 @@ namespace StockController.Forms
                     break;
             }
         }        
-        private void dgvMateriasPrimas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            PersonalizarColumnasGrid();
-        }
-        private void dgvMateriasPrimas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            
-        }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            ListarGrid();
-        }
+        
         //Metodos
         private void ListarGrid()
         {

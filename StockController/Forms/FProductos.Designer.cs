@@ -46,7 +46,11 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.listBox = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtReferencia = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnInicio)).BeginInit();
@@ -58,11 +62,11 @@
             this.dgvProductos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.ContextMenuStrip = this.contextMenuStrip1;
-            this.dgvProductos.Location = new System.Drawing.Point(400, 27);
+            this.dgvProductos.Location = new System.Drawing.Point(513, 27);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersWidth = 62;
             this.dgvProductos.RowTemplate.Height = 28;
-            this.dgvProductos.Size = new System.Drawing.Size(868, 536);
+            this.dgvProductos.Size = new System.Drawing.Size(942, 536);
             this.dgvProductos.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -82,33 +86,34 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(190, 70);
+            this.txtCantidad.Location = new System.Drawing.Point(109, 174);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(106, 26);
+            this.txtCantidad.Size = new System.Drawing.Size(74, 26);
             this.txtCantidad.TabIndex = 2;
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(190, 117);
+            this.txtPrecio.Location = new System.Drawing.Point(326, 171);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(106, 26);
+            this.txtPrecio.Size = new System.Drawing.Size(115, 26);
             this.txtPrecio.TabIndex = 3;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(22, 229);
+            this.txtDescripcion.Location = new System.Drawing.Point(201, 327);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(321, 115);
+            this.txtDescripcion.Size = new System.Drawing.Size(240, 66);
             this.txtDescripcion.TabIndex = 4;
             // 
             // txtTiempo
             // 
-            this.txtTiempo.Location = new System.Drawing.Point(208, 150);
+            this.txtTiempo.Location = new System.Drawing.Point(201, 220);
+            this.txtTiempo.Multiline = true;
             this.txtTiempo.Name = "txtTiempo";
-            this.txtTiempo.Size = new System.Drawing.Size(88, 26);
+            this.txtTiempo.Size = new System.Drawing.Size(240, 69);
             this.txtTiempo.TabIndex = 5;
             // 
             // label1
@@ -123,7 +128,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 73);
+            this.label2.Location = new System.Drawing.Point(18, 174);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 20);
             this.label2.TabIndex = 7;
@@ -132,7 +137,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 120);
+            this.label3.Location = new System.Drawing.Point(225, 174);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 20);
             this.label3.TabIndex = 8;
@@ -141,16 +146,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 153);
+            this.label4.Location = new System.Drawing.Point(18, 240);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 20);
+            this.label4.Size = new System.Drawing.Size(92, 40);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Tempo de Produccion";
+            this.label4.Text = "Tempo de \r\nProduccion:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 191);
+            this.label5.Location = new System.Drawing.Point(23, 342);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 20);
             this.label5.TabIndex = 10;
@@ -159,7 +164,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.YellowGreen;
-            this.btnGuardar.Location = new System.Drawing.Point(231, 452);
+            this.btnGuardar.Location = new System.Drawing.Point(163, 512);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(99, 42);
             this.btnGuardar.TabIndex = 11;
@@ -170,7 +175,7 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.LightPink;
-            this.btnEliminar.Location = new System.Drawing.Point(231, 512);
+            this.btnEliminar.Location = new System.Drawing.Point(284, 512);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(99, 42);
             this.btnEliminar.TabIndex = 12;
@@ -192,6 +197,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtReferencia);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.listBox);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
@@ -204,23 +213,60 @@
             this.groupBox1.Controls.Add(this.txtCantidad);
             this.groupBox1.Location = new System.Drawing.Point(30, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(364, 363);
+            this.groupBox1.Size = new System.Drawing.Size(463, 420);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos :";
             // 
+            // listBox
+            // 
+            this.listBox.FormattingEnabled = true;
+            this.listBox.ItemHeight = 20;
+            this.listBox.Location = new System.Drawing.Point(247, 30);
+            this.listBox.Name = "listBox";
+            this.listBox.Size = new System.Drawing.Size(194, 104);
+            this.listBox.TabIndex = 17;
+            this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(302, 174);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 20);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "$";
+            // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(155, -2);
+            this.txtNombre.Location = new System.Drawing.Point(20, 53);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(106, 26);
+            this.txtNombre.Size = new System.Drawing.Size(136, 26);
             this.txtNombre.TabIndex = 15;
+            this.txtNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyUp);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 87);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(95, 20);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Referencia :";
+            // 
+            // txtReferencia
+            // 
+            this.txtReferencia.Location = new System.Drawing.Point(22, 120);
+            this.txtReferencia.Name = "txtReferencia";
+            this.txtReferencia.Size = new System.Drawing.Size(136, 26);
+            this.txtReferencia.TabIndex = 19;
+            this.txtReferencia.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtReferencia_KeyUp);
             // 
             // FProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 575);
+            this.ClientSize = new System.Drawing.Size(1467, 575);
             this.Controls.Add(this.btnInicio);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
@@ -257,5 +303,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtReferencia;
+        private System.Windows.Forms.Label label7;
     }
 }
