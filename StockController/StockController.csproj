@@ -61,6 +61,12 @@
     <Compile Include="Forms\FCompras.Designer.cs">
       <DependentUpon>FCompras.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FInicio.Designer.cs">
+      <DependentUpon>FInicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FMateriasPrimas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FCompras.resx">
       <DependentUpon>FCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FInicio.resx">
+      <DependentUpon>FInicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FMateriasPrimas.resx">
       <DependentUpon>FMateriasPrimas.cs</DependentUpon>

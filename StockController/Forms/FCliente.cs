@@ -1,4 +1,5 @@
 ﻿using StockController.Class;
+using StockController.Forms;
 using StockController.Models;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,9 @@ using System.Windows.Forms;
 
 namespace StockController
 {
-    public partial class ClienteForm : Form
+    public partial class FCliente : Form
     {
-        public ClienteForm()
+        public FCliente()
         {
             InitializeComponent();
             ToUpperText();
@@ -58,6 +59,23 @@ namespace StockController
             }
 
         }
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            FInicio fInicio = Application.OpenForms.OfType<FInicio>().FirstOrDefault();
+
+            if(fInicio == null)
+            {
+                fInicio = new FInicio();
+                fInicio.Show();
+            }
+            else            
+                fInicio.BringToFront();
+
+            if (Application.OpenForms.Count > 1)            
+                this.Close();   
+            else
+                this.Hide();
+        }
         private void Finalizar()
         {
             ListarGrid();
@@ -80,7 +98,12 @@ namespace StockController
                 IdCliente = IdCliente
             };
 
-            return Cliente.Guardar(cliente, Editar);
+            if (Cliente.Guardar(cliente, Editar)) 
+            {
+                MessageBox.Show("Operacion Correcta");
+                return true;
+            }
+            return false;
         }
         private bool Eliminar()
         {
@@ -133,10 +156,24 @@ namespace StockController
         }
         private void PersonalizarColumnasGrid()
         {
-            dgvDatosCliente.Columns["Nombre_cliente"].HeaderText = "Nombre";
+            foreach (DataGridViewColumn columna in dgvDatosCliente.Columns)
+            {
+                string nuevoHeaderText = columna.HeaderText;
+                ConfigurarCabeceraColumna(columna, nuevoHeaderText);
 
+                // También puedes personalizar otras propiedades de las columnas aquí si es necesario
+                DataGridViewCellStyle estiloCelda = new DataGridViewCellStyle();
+                // Configurar otras propiedades del estilo de celda si es necesario
+                columna.DefaultCellStyle = estiloCelda;
+            }
+            dgvDatosCliente.Columns["Nombre_cliente"].HeaderText = "Nombre";
             //Por cuestion de orden en la base de datos, a continuacion se altera la columna Apellido_cliente para ubicarla al lado de Nombre_cliente
             //dgvDatosCliente.Columns["Apellido_cliente"].DisplayIndex = 2;
+        }
+        private void ConfigurarCabeceraColumna(DataGridViewColumn columna, string nuevoHeaderText)
+        {
+            columna.HeaderText = nuevoHeaderText;
+            columna.HeaderCell.Style.Font = new Font(columna.DataGridView.Font, FontStyle.Bold);
         }
         private void ToUpperText()
         {

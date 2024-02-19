@@ -25,7 +25,7 @@ namespace StockController.Models
                 new Parametro("@id_producto", productos.IdProducto),
                 new Parametro("@Nombre", productos.Nombre),
                 new Parametro("@Cantidad", productos.Cantidad),
-                new Parametro("@Precio_final", productos.Precio),
+                new Parametro("@Precio", productos.Precio),
                 new Parametro("@Descripcion", productos.Descripcion),
                 new Parametro("@tiempo_produccion",  productos.TiempoProduccion),
                 new Parametro("@Referencia", productos.Referencia),

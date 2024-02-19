@@ -1,6 +1,6 @@
 ﻿namespace StockController
 {
-    partial class ClienteForm
+    partial class FCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCliente));
             this.dgvDatosCliente = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,9 +42,11 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.guardarBtn = new System.Windows.Forms.Button();
             this.eliminarBtn = new System.Windows.Forms.Button();
+            this.btnInicio = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosCliente)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.datosGb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInicio)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDatosCliente
@@ -160,17 +163,30 @@
             this.eliminarBtn.UseVisualStyleBackColor = false;
             this.eliminarBtn.Click += new System.EventHandler(this.eliminarBtn_Click);
             // 
-            // ClienteForm
+            // btnInicio
+            // 
+            this.btnInicio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInicio.Image = ((System.Drawing.Image)(resources.GetObject("btnInicio.Image")));
+            this.btnInicio.Location = new System.Drawing.Point(646, 184);
+            this.btnInicio.Name = "btnInicio";
+            this.btnInicio.Size = new System.Drawing.Size(50, 44);
+            this.btnInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnInicio.TabIndex = 14;
+            this.btnInicio.TabStop = false;
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
+            // 
+            // FCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 567);
+            this.Controls.Add(this.btnInicio);
             this.Controls.Add(this.eliminarBtn);
             this.Controls.Add(this.guardarBtn);
             this.Controls.Add(this.datosGb);
             this.Controls.Add(this.dgvDatosCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Name = "ClienteForm";
+            this.Name = "FCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";
             this.Load += new System.EventHandler(this.ClienteForm_Load);
@@ -178,6 +194,7 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.datosGb.ResumeLayout(false);
             this.datosGb.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInicio)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,6 +213,7 @@
         private System.Windows.Forms.TextBox txtCiudad;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
+        private System.Windows.Forms.PictureBox btnInicio;
     }
 }
 

@@ -38,6 +38,40 @@ namespace StockController.Forms
         {
             ListarTodo();
         }
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            FInicio fInicio = Application.OpenForms.OfType<FInicio>().FirstOrDefault();
+
+            if (fInicio == null)
+            {
+                fInicio = new FInicio();
+                fInicio.Show();
+            }
+            else
+                fInicio.BringToFront();
+
+            if (Application.OpenForms.Count > 1)
+                this.Close();
+            else
+                this.Hide();
+        }
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            FCompras fCompras = Application.OpenForms.OfType<FCompras>().FirstOrDefault();
+
+            if (fCompras == null)
+            {
+                fCompras = new FCompras();
+                fCompras.Show();
+            }
+            else
+                fCompras.BringToFront();
+
+            if (Application.OpenForms.Count > 1)
+                this.Close();
+            else
+                this.Hide();
+        }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcionSeleccionada = comboBox.SelectedItem.ToString();
@@ -82,7 +116,7 @@ namespace StockController.Forms
                 // Asegúrate de que la columna tenga un nombre
                 if (!string.IsNullOrEmpty(columna.Name))
                 {
-
+                    ConfigurarCabeceraColumna(columna, columna.HeaderText);
                     // Puedes personalizar las columnas según su nombre o cualquier otra condición necesaria
                     if (columna.Name == "TotalCantidad")
                     {
@@ -94,8 +128,9 @@ namespace StockController.Forms
                         DbDatos.OcultarIds(dgvMateriasPrimas);
                        
                     }
-                    else if (columna.Name == "Precio" || columna.Name == "Cantidad")
-                    {
+                    else if (columna.Name == "Precio" || columna.Name == "Cantidad" || columna.Name == "Total")
+                    { 
+                        dgvMateriasPrimas.Columns["Precio"].HeaderText = "Precio Unitario";
                         DataGridViewCellStyle estiloCeldaNumerica = new DataGridViewCellStyle();
                         estiloCeldaNumerica.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinea a la derecha
                         estiloCeldaNumerica.Format = "N0";
@@ -110,7 +145,11 @@ namespace StockController.Forms
                 }
             }
         }
-
+        private void ConfigurarCabeceraColumna(DataGridViewColumn columna, string nuevoHeaderText)
+        {
+            columna.HeaderText = nuevoHeaderText;
+            columna.HeaderCell.Style.Font = new Font(columna.DataGridView.Font, FontStyle.Bold);
+        }
         private void VerificarExistencia()
         {
             if (comboBox.SelectedIndex != -1)
@@ -163,6 +202,7 @@ namespace StockController.Forms
             }
         }
 
+        
     }
 
 }

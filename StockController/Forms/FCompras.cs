@@ -114,7 +114,6 @@ namespace StockController.Forms
             {
                 // Obtiene el texto seleccionado en el ListBox
                 string selectedText = listBox.SelectedItem.ToString();
-
                 // Agrega el texto al TextBox correspondiente
                 ultimoTextBoxModificado.Text = selectedText;
             }
@@ -276,10 +275,11 @@ namespace StockController.Forms
                 // Asegúrate de que la columna tenga un nombre
                 if (!string.IsNullOrEmpty(columna.Name))
                 {
-
+                    ConfigurarCabeceraColumna(columna, columna.HeaderText);
                     // Puedes personalizar las columnas según su nombre o cualquier otra condición necesaria
                     if (columna.Name == "Precio" || columna.Name == "Cantidad")
                     {
+                        dgvMateriasPrimas.Columns["Precio"].HeaderText = "Precio por Unidad";
                         DataGridViewCellStyle estiloCeldaNumerica = new DataGridViewCellStyle();
                         estiloCeldaNumerica.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinea a la derecha
                         estiloCeldaNumerica.Format = "N0";
@@ -293,6 +293,27 @@ namespace StockController.Forms
                     }
                 }
             }
+        }        private void ConfigurarCabeceraColumna(DataGridViewColumn columna, string nuevoHeaderText)
+        {
+            columna.HeaderText = nuevoHeaderText;
+            columna.HeaderCell.Style.Font = new Font(columna.DataGridView.Font, FontStyle.Bold);
+        }
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            FInicio fInicio = Application.OpenForms.OfType<FInicio>().FirstOrDefault();
+
+            if (fInicio == null)
+            {
+                fInicio = new FInicio();
+                fInicio.Show();
+            }
+            else
+                fInicio.BringToFront();
+
+            if (Application.OpenForms.Count > 1)
+                this.Close();
+            else
+                this.Hide();
         }
     }
 }

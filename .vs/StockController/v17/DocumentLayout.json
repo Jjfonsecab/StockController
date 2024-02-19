@@ -3,28 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\forms\\fproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\fproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\forms\\fcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\fcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\stockcontroller\\models\\productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\models\\productos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\forms\\fproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\fproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\forms\\fmateriasprimas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\fmateriasprimas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\stockcontroller\\forms\\fproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\forms\\fcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\fcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\forms\\fmateriasprimas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\fmateriasprimas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\forms\\fproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\fproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\stockcontroller\\forms\\fmateriasprimas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\fmateriasprimas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\forms\\finicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\finicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|c:\\users\\jeison\\documents\\code\u0027s\\.net\\stockcontroller\\stockcontroller\\forms\\finicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53205B4D-5532-4CA2-8FBB-AEDBFCDD1CC3}|StockController\\StockController.csproj|solutionrelative:stockcontroller\\forms\\finicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,57 +42,93 @@
       "DocumentGroups": [
         {
           "DockedWidth": 324,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Program.cs",
-              "RelativeDocumentMoniker": "StockController\\Program.cs",
-              "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Program.cs",
-              "RelativeToolTip": "StockController\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-16T18:32:20.963Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Productos.cs",
-              "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Models\\Productos.cs",
-              "RelativeDocumentMoniker": "StockController\\Models\\Productos.cs",
-              "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Models\\Productos.cs",
-              "RelativeToolTip": "StockController\\Models\\Productos.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-16T16:54:19.142Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FCompras.cs",
+              "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FCompras.cs",
+              "RelativeDocumentMoniker": "StockController\\Forms\\FCompras.cs",
+              "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FCompras.cs",
+              "RelativeToolTip": "StockController\\Forms\\FCompras.cs",
+              "ViewState": "AQIAAA8BAAAAAAAAAAAYwBkBAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T21:25:49.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FCompras.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FCompras.cs",
+              "RelativeDocumentMoniker": "StockController\\Forms\\FCompras.cs",
+              "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FCompras.cs [Design]",
+              "RelativeToolTip": "StockController\\Forms\\FCompras.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T21:25:48.461Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "FProductos.cs",
               "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FProductos.cs",
               "RelativeDocumentMoniker": "StockController\\Forms\\FProductos.cs",
               "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FProductos.cs",
               "RelativeToolTip": "StockController\\Forms\\FProductos.cs",
-              "ViewState": "AQIAABIBAAAAAAAAAAAAACABAABLAAAA",
+              "ViewState": "AQIAAA0BAAAAAAAAAAArwCEBAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-16T16:49:26.857Z",
+              "WhenOpened": "2024-02-19T21:24:44.587Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "FProductos.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FProductos.cs",
               "RelativeDocumentMoniker": "StockController\\Forms\\FProductos.cs",
               "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FProductos.cs [Design]",
               "RelativeToolTip": "StockController\\Forms\\FProductos.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-16T16:39:59.696Z",
+              "WhenOpened": "2024-02-19T21:24:43.304Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FMateriasPrimas.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FMateriasPrimas.cs",
+              "RelativeDocumentMoniker": "StockController\\Forms\\FMateriasPrimas.cs",
+              "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FMateriasPrimas.cs [Design]",
+              "RelativeToolTip": "StockController\\Forms\\FMateriasPrimas.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T18:44:22.402Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FInicio.cs",
+              "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FInicio.cs",
+              "RelativeDocumentMoniker": "StockController\\Forms\\FInicio.cs",
+              "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FInicio.cs",
+              "RelativeToolTip": "StockController\\Forms\\FInicio.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAIwCgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T18:15:51.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FInicio.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FInicio.cs",
+              "RelativeDocumentMoniker": "StockController\\Forms\\FInicio.cs",
+              "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FInicio.cs [Design]",
+              "RelativeToolTip": "StockController\\Forms\\FInicio.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-19T18:02:58.245Z",
               "EditorCaption": " [Design]"
             }
           ]
@@ -117,43 +161,30 @@
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "FloatingWindowState": {
-        "Id": "27ac39c1-98e9-4047-b796-4148c39b15b5",
+        "Id": "416e7f2e-124d-4bcc-9234-32e33a4dff0c",
         "Display": 0,
-        "X": 199,
-        "Y": 47,
-        "Width": 942,
-        "Height": 527,
-        "WindowState": 2
+        "X": -95,
+        "Y": 115,
+        "Width": 1001,
+        "Height": 528,
+        "WindowState": 0
       },
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "FMateriasPrimas.cs",
               "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FMateriasPrimas.cs",
               "RelativeDocumentMoniker": "StockController\\Forms\\FMateriasPrimas.cs",
               "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FMateriasPrimas.cs",
               "RelativeToolTip": "StockController\\Forms\\FMateriasPrimas.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADkAAAAIAAAA",
+              "ViewState": "AQIAAGkAAAAAAAAAAAA0wBoAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-16T16:30:58.146Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FCompras.cs",
-              "DocumentMoniker": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FCompras.cs",
-              "RelativeDocumentMoniker": "StockController\\Forms\\FCompras.cs",
-              "ToolTip": "C:\\Users\\Jeison\\Documents\\CODE\u0027S\\.NET\\StockController\\StockController\\Forms\\FCompras.cs",
-              "RelativeToolTip": "StockController\\Forms\\FCompras.cs",
-              "ViewState": "AQIAAN4AAAAAAAAAAAA3wCcBAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-15T17:58:21.103Z",
+              "WhenOpened": "2024-02-19T18:44:23.717Z",
               "EditorCaption": ""
             }
           ]

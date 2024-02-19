@@ -107,6 +107,7 @@
             this.btnCompras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCompras.TabIndex = 6;
             this.btnCompras.TabStop = false;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
             // 
             // label2
             // 
@@ -146,6 +147,7 @@
             this.btnInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnInicio.TabIndex = 7;
             this.btnInicio.TabStop = false;
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
             // btnTodosLosDatos
             // 

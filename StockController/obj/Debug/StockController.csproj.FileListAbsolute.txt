@@ -2,7 +2,6 @@ C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Properties.Resources.resources
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.csproj.GenerateResource.cache
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.csproj.CoreCompileInputs.cache
-C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.ClienteForm.resources
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\bin\Debug\StockController.exe.config
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\bin\Debug\StockController.exe
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\bin\Debug\StockController.pdb
@@ -11,3 +10,5 @@ C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Forms.FMateriasPrimas.resources
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Forms.FCompras.resources
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Forms.FProductos.resources
+C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.FCliente.resources
+C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Forms.FInicio.resources
