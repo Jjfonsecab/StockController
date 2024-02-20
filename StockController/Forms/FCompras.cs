@@ -293,7 +293,8 @@ namespace StockController.Forms
                     }
                 }
             }
-        }        private void ConfigurarCabeceraColumna(DataGridViewColumn columna, string nuevoHeaderText)
+        }   
+        private void ConfigurarCabeceraColumna(DataGridViewColumn columna, string nuevoHeaderText)
         {
             columna.HeaderText = nuevoHeaderText;
             columna.HeaderCell.Style.Font = new Font(columna.DataGridView.Font, FontStyle.Bold);
@@ -314,6 +315,11 @@ namespace StockController.Forms
                 this.Close();
             else
                 this.Hide();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using StockController.Class;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace StockController.Models
 {
     class Cliente
     {
+        [Key]
         public int IdCliente { get; set; }
         public string NombreCliente { get; set; }
         public string Direccion { get; set; }

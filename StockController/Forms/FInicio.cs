@@ -36,5 +36,11 @@ namespace StockController.Forms
             FProductos formProductos = new FProductos();
             formProductos.Show();
         }
+
+        private void btnPedidos_Click(object sender, EventArgs e)
+        {
+            FPedidos fPedidos = new FPedidos();
+            fPedidos.Show();
+        }
     }
 }

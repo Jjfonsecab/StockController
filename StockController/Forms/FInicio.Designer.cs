@@ -37,10 +37,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnPedidos = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMateriasPrimas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPedidos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCliente
@@ -127,11 +130,34 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Productos";
             // 
+            // btnPedidos
+            // 
+            this.btnPedidos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPedidos.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.Image")));
+            this.btnPedidos.Location = new System.Drawing.Point(47, 295);
+            this.btnPedidos.Name = "btnPedidos";
+            this.btnPedidos.Size = new System.Drawing.Size(59, 52);
+            this.btnPedidos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnPedidos.TabIndex = 8;
+            this.btnPedidos.TabStop = false;
+            this.btnPedidos.Click += new System.EventHandler(this.btnPedidos_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(43, 375);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 30);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Pedidos";
+            // 
             // FInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 435);
+            this.ClientSize = new System.Drawing.Size(783, 435);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnPedidos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -146,6 +172,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCompras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMateriasPrimas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPedidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +188,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox btnPedidos;
+        private System.Windows.Forms.Label label5;
     }
 }
