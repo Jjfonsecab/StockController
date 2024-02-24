@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -32,8 +33,8 @@ namespace StockController
         private void guardarBtn_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos(txtNombre, txtCiudad, txtDireccion1)) return;
-            
-            if(!Modificar)
+
+            if (!Modificar)
                 if (!VerificarExistencia()) return;
 
             if (!Guardar()) return;
@@ -63,16 +64,16 @@ namespace StockController
         {
             FInicio fInicio = Application.OpenForms.OfType<FInicio>().FirstOrDefault();
 
-            if(fInicio == null)
+            if (fInicio == null)
             {
                 fInicio = new FInicio();
                 fInicio.Show();
             }
-            else            
+            else
                 fInicio.BringToFront();
 
-            if (Application.OpenForms.Count > 1)            
-                this.Close();   
+            if (Application.OpenForms.Count > 1)
+                this.Close();
             else
                 this.Hide();
         }
@@ -98,7 +99,7 @@ namespace StockController
                 IdCliente = IdCliente
             };
 
-            if (Cliente.Guardar(cliente, Editar)) 
+            if (Cliente.Guardar(cliente, Editar))
             {
                 MessageBox.Show("Operacion Correcta");
                 return true;
@@ -107,11 +108,26 @@ namespace StockController
         }
         private bool Eliminar()
         {
-            int idCliente = IdCliente;
+            try
+            {
+                int idCliente = IdCliente;
 
-            return Cliente.Eliminar(idCliente);
-
+                return Cliente.Eliminar(idCliente);
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show("No se puede eliminar este cliente porque tiene registros relacionados en la tabla de Pedidos.", "Error de eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                               
+                return false;
+            }
+            catch (Exception exc)
+            {
+                // Mensaje genérico para otras excepciones
+                MessageBox.Show($"Se produjo un error al intentar eliminar el cliente. Consulta los detalles en la consola.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
+
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IdCliente = Convert.ToInt32(dgvDatosCliente.CurrentRow.Cells["id_cliente"].Value);

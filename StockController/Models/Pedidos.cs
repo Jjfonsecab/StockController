@@ -12,18 +12,9 @@ namespace StockController.Models
 {
     class Pedidos
     {
-        [Key]
         public int IdPedido { get; set; }
         //Ojo con la relacion de las foreign keys
-        public int IdCliente { get; set; }
-
-        [ForeignKey("IdCliente")]
-        public Cliente Cliente { get; set; }
-
-        public int IdProducto { get; set; }
-        [ForeignKey("IdProducto")]
-        public Productos Productos { get; set; }
-
+        public int IdCliente { get; set; }        
         public string Anotaciones { get; set; }
         public DateTime FechaRecibido { get; set; }
         public DateTime FechaEntrega { get; set; }
@@ -34,7 +25,6 @@ namespace StockController.Models
             {
                 new Parametro("@id_pedido", pedidos.IdPedido),
                 new Parametro("@id_cliente", pedidos.IdCliente),
-                new Parametro("@id_producto", pedidos.IdProducto),
                 new Parametro("@Anotaciones", pedidos.Anotaciones),
                 new Parametro("@fecha_recibido", pedidos.FechaRecibido),
                 new Parametro("@fecha_entrega",  pedidos.FechaEntrega),
@@ -50,10 +40,6 @@ namespace StockController.Models
         public static DataTable ListarTodo()
         {
             return DbDatos.Listar("Pedidos_Listar");
-        }
-        public static DataTable ListarOtrasTablas(string nombreProcedimiento)
-        {
-            return DbDatos.Listar(nombreProcedimiento);
         }
     }
 }

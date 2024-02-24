@@ -277,7 +277,7 @@ namespace StockController.Forms
                 {
                     ConfigurarCabeceraColumna(columna, columna.HeaderText);
                     // Puedes personalizar las columnas según su nombre o cualquier otra condición necesaria
-                    if (columna.Name == "Precio" || columna.Name == "Cantidad")
+                    if (columna.Name == "Precio" || columna.Name == "Cantidad" || columna.Name == "Total")
                     {
                         dgvMateriasPrimas.Columns["Precio"].HeaderText = "Precio por Unidad";
                         DataGridViewCellStyle estiloCeldaNumerica = new DataGridViewCellStyle();

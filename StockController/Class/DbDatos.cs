@@ -64,8 +64,8 @@ namespace StockController.Class
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                return false;
+                Console.WriteLine(ex.Message);
+                throw;
             }
             finally
             {

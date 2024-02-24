@@ -13,3 +13,4 @@ C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.FCliente.resources
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Forms.FInicio.resources
 C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Forms.FPedidos.resources
+C:\Users\Jeison\Documents\CODE'S\.NET\StockController\StockController\obj\Debug\StockController.Forms.FDetallesPedido.resources

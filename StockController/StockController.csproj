@@ -62,6 +62,12 @@
     <Compile Include="Forms\FCompras.Designer.cs">
       <DependentUpon>FCompras.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FDetallesPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FDetallesPedido.Designer.cs">
+      <DependentUpon>FDetallesPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,7 @@
       <DependentUpon>FProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\DetallesPedido.cs" />
     <Compile Include="Models\MateriasPrimas.cs" />
     <Compile Include="Models\MateriasProductos.cs" />
     <Compile Include="Models\Pedidos.cs" />
@@ -99,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FCompras.resx">
       <DependentUpon>FCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FDetallesPedido.resx">
+      <DependentUpon>FDetallesPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FInicio.resx">
       <DependentUpon>FInicio.cs</DependentUpon>

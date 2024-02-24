@@ -15,24 +15,23 @@ namespace StockController.Forms
         {
             InitializeComponent();
             ToUpperText();
-
         }
 
         private void Pedidos_Load(object sender, EventArgs e)
         {
             ListarTodo();
-            MostrarFechaActual();
+            //MostrarFechaActual();
         }
 
         bool Editar;
         int IdPedidos;
         int IdCliente;
-        int IdProducto;
         bool Modificar;
+
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos(txtCliente, txtProducto, txtAnotaciones, txtFechaEntrega, txtFechaRecibido))
+            if (!ValidarCampos(txtCliente, txtAnotaciones, txtFechaEntrega, txtFechaRecibido))
                 return;
             if (Modificar)
             {
@@ -61,48 +60,70 @@ namespace StockController.Forms
             else
                 this.Hide();
         }
+        private void btnPedidos_Click(object sender, EventArgs e)
+        {
+            if (!ValidarCampos(txtCliente, txtAnotaciones, txtFechaEntrega, txtFechaRecibido))
+            {
+                MessageBox.Show("Por favor llene todos los campos");
+                return;
+            }
+                
+            
+            if (!Guardar()) return;
+
+            Finalizar(); 
+
+            FDetallesPedido fDetalles = Application.OpenForms.OfType<FDetallesPedido>().FirstOrDefault();
+
+            if (fDetalles == null)
+            {
+                fDetalles = new FDetallesPedido();
+                fDetalles.Show();
+            }
+            else
+                fDetalles.BringToFront();
+            
+        }
+
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IdPedidos = Convert.ToInt32(dgvPedidos.CurrentRow.Cells["id_pedido"].Value);
             txtCliente.Text = dgvPedidos.CurrentRow.Cells["id_cliente"].Value.ToString();
-            txtProducto.Text = dgvPedidos.CurrentRow.Cells["id_producto"].Value.ToString();
-            txtReferencia.Text = dgvPedidos.CurrentRow.Cells["id_producto"].Value.ToString();
             txtAnotaciones.Text = dgvPedidos.CurrentRow.Cells["fecha_recibido"].Value.ToString();
-            txtFechaEntrega.Text = dgvPedidos.CurrentRow.Cells["fecha_entrega"].Value.ToString();
-
-            
+            txtFechaEntrega.Text = dgvPedidos.CurrentRow.Cells["fecha_entrega"].Value.ToString();            
 
             Editar = true;
             Modificar = true;
         }
+        private TextBox campoSeleccionado;
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
             DateTime fechaSeleccionada = monthCalendar.SelectionStart;
 
-            txtFechaEntrega.Text = fechaSeleccionada.ToString("yyyy-MM-dd");
+            if (campoSeleccionado == txtFechaRecibido)
+                txtFechaRecibido.Text = fechaSeleccionada.ToString("yyyy-MM-dd");
+            
+            else if (campoSeleccionado == txtFechaEntrega)            
+                txtFechaEntrega.Text = fechaSeleccionada.ToString("yyyy-MM-dd");            
         }
 
         private DateTime fechaSeleccionada;
         private System.Windows.Forms.TextBox ultimoTextBoxModificado = null;
+        private void txtFechaRecibido_Click(object sender, EventArgs e)
+        {
+            campoSeleccionado = txtFechaRecibido;
+        }
+
+        private void txtFechaEntrega_Click(object sender, EventArgs e)
+        {
+            campoSeleccionado = txtFechaEntrega;
+        }
         private void txtCliente_KeyUp(object sender, KeyEventArgs e)
         {
             ultimoTextBoxModificado = txtCliente;
             string searchText = txtCliente.Text;
             BuscarYMostrarResultados("RetornarClientePorId", txtCliente, listBox, "@NombreBuscado", "Nombre");
 
-        }
-        private void txtProducto_KeyUp(object sender, KeyEventArgs e)
-        {
-            ultimoTextBoxModificado = txtProducto;
-            string searchText = txtProducto.Text;
-            BuscarYMostrarResultados("RetornarProductoPorId", txtProducto, listBox, "@NombreBuscado", "Nombre");
-        }
-
-        private void txtReferencia_KeyUp(object sender, KeyEventArgs e)
-        {
-            ultimoTextBoxModificado = txtReferencia;
-            string searchText = txtReferencia.Text;
-            BuscarYMostrarResultados("RetornarProductoPorReferencia", txtReferencia, listBox, "@NombreBuscado", "Referencia");
         }
         private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -113,43 +134,41 @@ namespace StockController.Forms
             }
             else
             {
-                // Depuración: Muestra un mensaje si no se pudo determinar el TextBox correspondiente
                 MessageBox.Show("No se pudo determinar el TextBox correspondiente.");
             }
         }
         private bool Guardar()
         {
-            if (IdCliente <= 0 || IdProducto <= 0)
+            if (IdCliente <= 0 )
             {
-                MessageBox.Show("Selecciona un cliente y un producto válidos.");
+                MessageBox.Show("Selecciona un cliente  válido.");
                 return false;
             }
             Pedidos pedidos = new Pedidos()
             {
                 IdPedido = IdPedidos,
                 IdCliente = IdCliente,
-                IdProducto = IdProducto,
                 Anotaciones = txtAnotaciones.Text,
                 FechaRecibido = DateTime.Parse(txtFechaRecibido.Text),
                 FechaEntrega = DateTime.Parse(txtFechaEntrega.Text)
             };
-
+            
             return Pedidos.Guardar(pedidos, Editar);
         }
         private bool GuardarEditado()
         {
             if (IdPedidos > 0)
             {
-                DateTime fechaOriginal = DateTime.Parse(dgvPedidos.CurrentRow.Cells["fecha_recibido"].Value.ToString());
+                DateTime fechaRecibido = DateTime.Parse(dgvPedidos.CurrentRow.Cells["fecha_recibido"].Value.ToString());
+                DateTime fechaEntrega = DateTime.Parse(dgvPedidos.CurrentRow.Cells["fecha_entrega"].Value.ToString());
 
                 Pedidos pedidos = new Pedidos()
                 {
                     IdPedido = IdPedidos,
                     IdCliente = IdCliente,
-                    IdProducto = IdProducto,
                     Anotaciones = txtAnotaciones.Text,
-                    FechaRecibido = fechaOriginal,
-                    FechaEntrega = fechaSeleccionada
+                    FechaRecibido = fechaRecibido,
+                    FechaEntrega = fechaEntrega
                 };
 
                 return Pedidos.Guardar(pedidos, true);  // true indica modo edición
@@ -168,7 +187,6 @@ namespace StockController.Forms
         private void Linpiar()
         {
             txtCliente.Text = "";
-            txtProducto.Text = "";
             txtAnotaciones.Text = "";
             txtFechaRecibido.Text = "";
             txtFechaEntrega.Text = "";
@@ -193,17 +211,13 @@ namespace StockController.Forms
         private void ListarTodo()
         {
             dgvPedidos.DataSource = Pedidos.ListarTodo();
-            //DbDatos.OcultarIds(dgvPedidos);
+            DbDatos.OcultarIds(dgvPedidos);
             PersonalizarColumnasGrid();
         }
         private void ToUpperText()//El upperText para los comboBox esta en comboBox_TextChanged
         {
             txtCliente.CharacterCasing = CharacterCasing.Upper;
-            txtCliente.Click += TextBox_Click;
-            txtProducto.CharacterCasing = CharacterCasing.Upper;
-            txtProducto.Click += TextBox_Click;
-            txtReferencia.CharacterCasing = CharacterCasing.Upper;
-            txtReferencia.Click += TextBox_Click;
+            txtCliente.Click += TextBox_Click;            
             txtAnotaciones.CharacterCasing = CharacterCasing.Upper;
             txtAnotaciones.Click += TextBox_Click;
         }
@@ -224,10 +238,9 @@ namespace StockController.Forms
                 {
                     ConfigurarCabeceraColumna(columna, columna.HeaderText);
                     // Puedes personalizar las columnas según su nombre o cualquier otra condición necesaria
-                    if (columna.Name == "id_cliente" || columna.Name == "id_producto")
+                    if (columna.Name == "id_cliente" )
                     {
                         dgvPedidos.Columns["id_cliente"].HeaderText = "Cliente";
-                        dgvPedidos.Columns["id_producto"].HeaderText = "Productos";
                         DataGridViewCellStyle estiloCeldaNumerica = new DataGridViewCellStyle();
                         estiloCeldaNumerica.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinea a la derecha
                         estiloCeldaNumerica.Format = "N0";
@@ -272,40 +285,11 @@ namespace StockController.Forms
 
                         listBox.Items.Add(nombreCliente);
 
-                    }
-                    else if(textBox == txtProducto)
-                    {
-                        IdProducto = Convert.ToInt32(row["Id_producto"]);
-                        string nombreProducto = row["Nombre"].ToString();
-
-                        listBox.Items.Add(nombreProducto);
-                    }             
-                    if(textBox == txtReferencia)
-                    {
-                        
-                        string nombreSeleccionado = txtProducto.Text;
-
-                        List<Parametro> parametroReferencia = new List<Parametro>
-                        {
-                            new Parametro("@NombreBuscado", nombreSeleccionado)
-                        };
-                        DataTable resultReferencia = DbDatos.Listar("RetornarProductoPorReferencia", parametroReferencia);
-
-                        listBox.Items.Clear();
-
-                        if (resultReferencia != null && resultReferencia.Rows.Count > 0)
-                        {
-                            foreach (DataRow referenciaRow in resultReferencia.Rows)
-                            {
-                                string referenciaProducto = referenciaRow["Referencia"].ToString();
-                                // Agregar la referencia al ListBox
-                                listBox.Items.Add(referenciaProducto);
-                            }
-                        }
-                    }
+                    }                    
                 }                
             }
         }
 
+        
     }
 }
