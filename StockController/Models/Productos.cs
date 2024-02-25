@@ -15,7 +15,6 @@ namespace StockController.Models
         public int IdProducto { get; set; }
         public string Nombre { get; set; }
         public string Referencia { get; set; }
-        public int Cantidad { get; set; }
         public decimal Precio { get; set; }
         public string Descripcion { get; set; }
         public string TiempoProduccion { get; set;}
@@ -26,7 +25,6 @@ namespace StockController.Models
             {
                 new Parametro("@id_producto", productos.IdProducto),
                 new Parametro("@Nombre", productos.Nombre),
-                new Parametro("@Cantidad", productos.Cantidad),
                 new Parametro("@Precio", productos.Precio),
                 new Parametro("@Descripcion", productos.Descripcion),
                 new Parametro("@tiempo_produccion",  productos.TiempoProduccion),

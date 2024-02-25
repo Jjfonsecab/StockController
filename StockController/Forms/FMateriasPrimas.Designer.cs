@@ -79,9 +79,9 @@
             this.groupBox1.Controls.Add(this.txtBusqueda);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.comboBox);
-            this.groupBox1.Location = new System.Drawing.Point(243, 51);
+            this.groupBox1.Location = new System.Drawing.Point(243, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(775, 146);
+            this.groupBox1.Size = new System.Drawing.Size(879, 163);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos : ";
@@ -101,9 +101,9 @@
             // 
             this.btnCompras.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCompras.Image = ((System.Drawing.Image)(resources.GetObject("btnCompras.Image")));
-            this.btnCompras.Location = new System.Drawing.Point(688, 54);
+            this.btnCompras.Location = new System.Drawing.Point(794, 49);
             this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Size = new System.Drawing.Size(57, 53);
+            this.btnCompras.Size = new System.Drawing.Size(54, 48);
             this.btnCompras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCompras.TabIndex = 6;
             this.btnCompras.TabStop = false;
@@ -122,9 +122,9 @@
             // 
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(608, 54);
+            this.btnBuscar.Location = new System.Drawing.Point(702, 49);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(57, 53);
+            this.btnBuscar.Size = new System.Drawing.Size(54, 48);
             this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnBuscar.TabIndex = 4;
             this.btnBuscar.TabStop = false;
@@ -136,6 +136,7 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(259, 26);
             this.txtBusqueda.TabIndex = 3;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // btnInicio
             // 
@@ -170,14 +171,14 @@
             this.dgvMateriasPrimas.Name = "dgvMateriasPrimas";
             this.dgvMateriasPrimas.RowHeadersWidth = 62;
             this.dgvMateriasPrimas.RowTemplate.Height = 28;
-            this.dgvMateriasPrimas.Size = new System.Drawing.Size(1003, 400);
+            this.dgvMateriasPrimas.Size = new System.Drawing.Size(1164, 400);
             this.dgvMateriasPrimas.TabIndex = 8;
             // 
             // FMateriasPrimas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 632);
+            this.ClientSize = new System.Drawing.Size(1245, 632);
             this.Controls.Add(this.dgvMateriasPrimas);
             this.Controls.Add(this.btnTodosLosDatos);
             this.Controls.Add(this.btnInicio);

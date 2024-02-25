@@ -33,13 +33,15 @@ namespace StockController.Models
 
             return DbDatos.Ejecutar("Pedidos_Agregar", parametros);
         }        
+        
         public static DataTable Listar()
-        {
-            return DbDatos.Listar("Pedido_Mostrar");
+        {            
+
+            return DbDatos.Listar("ObtenerDetallePedidoPorClienteYPedido");
         }
         public static DataTable ListarTodo()
         {
-            return DbDatos.Listar("Pedidos_Listar");
+            return DbDatos.Listar("ObtenerDatosPedidos");
         }
     }
 }

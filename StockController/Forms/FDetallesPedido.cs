@@ -61,11 +61,6 @@ namespace StockController.Forms
             Finalizar();
         }
 
-        private void ObtenerUltimoPedido()
-        {
-            DetallesPedido.ObtenerUltimoPedido();
-        }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
@@ -130,7 +125,8 @@ namespace StockController.Forms
             {
                 IdDetalle = IdDetalle,
                 IdPedido = IdPedidos,
-                IdProducto = IdProducto,                
+                IdProducto = IdProducto,       
+                Cantidad = Convert.ToInt32(txtCantidad.Text)
             };
 
             return DetallesPedido.Guardar(detalle, Editar);
@@ -144,6 +140,7 @@ namespace StockController.Forms
                     IdDetalle = IdDetalle,
                     IdPedido = IdPedidos,
                     IdProducto = IdProducto,
+                    Cantidad = Convert.ToInt32(txtCantidad.Text)
                 };
 
                 return DetallesPedido.Guardar(detalle, true);  

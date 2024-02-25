@@ -51,10 +51,13 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.PictureBox();
+            this.monthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.btnMateriasPrimas = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasPrimas)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnInicio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMateriasPrimas)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPrecio
@@ -77,11 +80,11 @@
             // 
             // txtFecha
             // 
-            this.txtFecha.Location = new System.Drawing.Point(278, 221);
+            this.txtFecha.Location = new System.Drawing.Point(698, 190);
             this.txtFecha.Name = "txtFecha";
-            this.txtFecha.ReadOnly = true;
             this.txtFecha.Size = new System.Drawing.Size(96, 26);
             this.txtFecha.TabIndex = 4;
+            this.txtFecha.Click += new System.EventHandler(this.txtFecha_Click);
             // 
             // groupBox1
             // 
@@ -101,7 +104,7 @@
             this.groupBox1.Controls.Add(this.txtCantidad);
             this.groupBox1.Location = new System.Drawing.Point(32, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(830, 326);
+            this.groupBox1.Size = new System.Drawing.Size(817, 270);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos : ";
@@ -112,7 +115,7 @@
             this.listBox.ItemHeight = 20;
             this.listBox.Location = new System.Drawing.Point(509, 25);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(304, 144);
+            this.listBox.Size = new System.Drawing.Size(285, 144);
             this.listBox.TabIndex = 17;
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             // 
@@ -146,7 +149,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 256);
+            this.label6.Location = new System.Drawing.Point(46, 196);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 20);
             this.label6.TabIndex = 11;
@@ -154,20 +157,20 @@
             // 
             // txtComentarios
             // 
-            this.txtComentarios.Location = new System.Drawing.Point(278, 256);
+            this.txtComentarios.Location = new System.Drawing.Point(173, 196);
             this.txtComentarios.Multiline = true;
             this.txtComentarios.Name = "txtComentarios";
-            this.txtComentarios.Size = new System.Drawing.Size(535, 47);
+            this.txtComentarios.Size = new System.Drawing.Size(316, 57);
             this.txtComentarios.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(46, 224);
+            this.label5.Location = new System.Drawing.Point(519, 190);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(136, 20);
+            this.label5.Size = new System.Drawing.Size(144, 20);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Fecha de Compra";
+            this.label5.Text = "Fecha de Compra :";
             // 
             // label4
             // 
@@ -214,7 +217,7 @@
             this.dgvMateriasPrimas.Name = "dgvMateriasPrimas";
             this.dgvMateriasPrimas.RowHeadersWidth = 62;
             this.dgvMateriasPrimas.RowTemplate.Height = 28;
-            this.dgvMateriasPrimas.Size = new System.Drawing.Size(1107, 249);
+            this.dgvMateriasPrimas.Size = new System.Drawing.Size(1232, 249);
             this.dgvMateriasPrimas.TabIndex = 6;
             // 
             // contextMenuStrip1
@@ -235,7 +238,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnGuardar.Location = new System.Drawing.Point(967, 123);
+            this.btnGuardar.Location = new System.Drawing.Point(218, 294);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(133, 45);
             this.btnGuardar.TabIndex = 7;
@@ -246,7 +249,7 @@
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.LightPink;
-            this.btnEliminar.Location = new System.Drawing.Point(967, 201);
+            this.btnEliminar.Location = new System.Drawing.Point(418, 294);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(133, 45);
             this.btnEliminar.TabIndex = 8;
@@ -258,7 +261,7 @@
             // 
             this.btnInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInicio.Image = ((System.Drawing.Image)(resources.GetObject("btnInicio.Image")));
-            this.btnInicio.Location = new System.Drawing.Point(1050, 268);
+            this.btnInicio.Location = new System.Drawing.Point(1049, 293);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(50, 44);
             this.btnInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -266,11 +269,32 @@
             this.btnInicio.TabStop = false;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
+            // monthCalendar
+            // 
+            this.monthCalendar.Location = new System.Drawing.Point(896, 29);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 15;
+            this.monthCalendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateChanged);
+            // 
+            // btnMateriasPrimas
+            // 
+            this.btnMateriasPrimas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMateriasPrimas.Image = ((System.Drawing.Image)(resources.GetObject("btnMateriasPrimas.Image")));
+            this.btnMateriasPrimas.Location = new System.Drawing.Point(1124, 293);
+            this.btnMateriasPrimas.Name = "btnMateriasPrimas";
+            this.btnMateriasPrimas.Size = new System.Drawing.Size(54, 46);
+            this.btnMateriasPrimas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnMateriasPrimas.TabIndex = 18;
+            this.btnMateriasPrimas.TabStop = false;
+            this.btnMateriasPrimas.Click += new System.EventHandler(this.btnMateriasPrimas_Click);
+            // 
             // FCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 637);
+            this.ClientSize = new System.Drawing.Size(1287, 637);
+            this.Controls.Add(this.btnMateriasPrimas);
+            this.Controls.Add(this.monthCalendar);
             this.Controls.Add(this.btnInicio);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
@@ -285,6 +309,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriasPrimas)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnInicio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMateriasPrimas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,5 +336,7 @@
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.PictureBox btnInicio;
         private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.MonthCalendar monthCalendar;
+        private System.Windows.Forms.PictureBox btnMateriasPrimas;
     }
 }

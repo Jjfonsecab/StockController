@@ -58,7 +58,7 @@
             // 
             this.btnInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInicio.Image = ((System.Drawing.Image)(resources.GetObject("btnInicio.Image")));
-            this.btnInicio.Location = new System.Drawing.Point(1079, 386);
+            this.btnInicio.Location = new System.Drawing.Point(1174, 293);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(57, 53);
             this.btnInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -164,11 +164,11 @@
             // 
             this.dgvPedidos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedidos.Location = new System.Drawing.Point(28, 283);
+            this.dgvPedidos.Location = new System.Drawing.Point(28, 275);
             this.dgvPedidos.Name = "dgvPedidos";
             this.dgvPedidos.RowHeadersWidth = 62;
             this.dgvPedidos.RowTemplate.Height = 28;
-            this.dgvPedidos.Size = new System.Drawing.Size(517, 291);
+            this.dgvPedidos.Size = new System.Drawing.Size(1045, 299);
             this.dgvPedidos.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -199,7 +199,7 @@
             // 
             // monthCalendar
             // 
-            this.monthCalendar.Location = new System.Drawing.Point(821, 32);
+            this.monthCalendar.Location = new System.Drawing.Point(884, 10);
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 0;
             this.monthCalendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateChanged);
@@ -208,7 +208,7 @@
             // 
             this.btnPedidos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPedidos.Image = ((System.Drawing.Image)(resources.GetObject("btnPedidos.Image")));
-            this.btnPedidos.Location = new System.Drawing.Point(967, 386);
+            this.btnPedidos.Location = new System.Drawing.Point(1174, 388);
             this.btnPedidos.Name = "btnPedidos";
             this.btnPedidos.Size = new System.Drawing.Size(57, 53);
             this.btnPedidos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -220,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1242, 588);
+            this.ClientSize = new System.Drawing.Size(1255, 588);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.btnPedidos);
             this.Controls.Add(this.monthCalendar);

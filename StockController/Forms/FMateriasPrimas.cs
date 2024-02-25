@@ -126,7 +126,12 @@ namespace StockController.Forms
                         estiloCeldaNumerica.Format = "N0";
                         columna.DefaultCellStyle = estiloCeldaNumerica;
                         DbDatos.OcultarIds(dgvMateriasPrimas);
-                       
+
+                        
+                    }
+                    else if (columna.Name == "Nombre")
+                    {
+                        dgvMateriasPrimas.Columns["Nombre"].Width = 170;
                     }
                     else if (columna.Name == "Precio" || columna.Name == "Cantidad" || columna.Name == "Total")
                     { 
@@ -136,11 +141,20 @@ namespace StockController.Forms
                         estiloCeldaNumerica.Format = "N0";
                         columna.DefaultCellStyle = estiloCeldaNumerica;
                         DbDatos.OcultarIds(dgvMateriasPrimas);
+
                     }
                     else if (columna.Name == "fecha_compra")
                     {
                         dgvMateriasPrimas.Columns["fecha_compra"].HeaderText = "Fecha";
                         DbDatos.OcultarIds(dgvMateriasPrimas);
+                    }
+                    else if (columna.Name == "Comentarios")
+                    {
+                        // Configurar la columna "Comentarios"
+                        //columna.HeaderText = "Comentarios";  // Puedes personalizar el encabezado
+                        columna.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                        columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
+                        columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     }
                 }
             }
@@ -201,8 +215,48 @@ namespace StockController.Forms
                 textBox.SelectAll();
             }
         }
+        private System.Windows.Forms.TextBox ultimoTextBoxModificado = null;
 
-        
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if (comboBox.SelectedIndex != -1)
+            {
+                string opcionSeleccionada = comboBox.SelectedItem.ToString();
+                string valorBusqueda = txtBusqueda.Text.Trim();
+
+                // Diccionario que mapea las opciones del ComboBox a los nombres de los stored procedures
+                Dictionary<string, string> storedProcedures = new Dictionary<string, string>
+                {
+                    { "Nombre", "BuscarMateriaPrimaPorNombre" },
+                    { "Fecha de Compra", "BuscarMateriaPrimaPorFecha" },
+                    { "Proveedor", "BuscarMateriaPrimaPorProveedor" }
+                };
+
+                // Verifica si la opción seleccionada está en el diccionario
+                if (storedProcedures.ContainsKey(opcionSeleccionada))
+                {
+                    string nombreStoredProcedure = storedProcedures[opcionSeleccionada];
+
+                    List<Parametro> parametros = new List<Parametro>
+                    {
+                        new Parametro("@NombreBuscado", valorBusqueda)
+                    };
+
+                    DataTable resultado = DbDatos.Listar(nombreStoredProcedure, parametros);
+                    if (resultado != null && resultado.Rows.Count > 0)
+                    {
+                        dgvMateriasPrimas.DataSource = resultado;
+                        PersonalizarColumnasGrid();
+                    }
+                    else
+                        MessageBox.Show("Item no Encontrado.", "Item Inexistente", MessageBoxButtons.OK, MessageBoxIcon.Warning);                    
+                }
+                else                
+                    MessageBox.Show("Por favor seleccione una opción de búsqueda válida.");                
+            }
+            else
+                MessageBox.Show("Por favor seleccione una opción de búsqueda.");            
+        }        
     }
 
 }

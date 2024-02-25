@@ -24,7 +24,7 @@ namespace StockController.Forms
         private void FMateriasPrimas_Load(object sender, EventArgs e)
         {
             ListarTodo();
-            MostrarFechaActual();
+            //MostrarFechaActual();
         }
 
         bool Editar;
@@ -47,6 +47,7 @@ namespace StockController.Forms
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+
             if (dgvMateriasPrimas.SelectedRows.Count == 0 || dgvMateriasPrimas.CurrentRow == null)
             {
                 MessageBox.Show("Selecciona una fila antes de eliminar.");
@@ -83,7 +84,6 @@ namespace StockController.Forms
             string searchText = txtNombre.Text;
 
             BuscarYMostrarResultados("RetornarMateriaPrimaPorNombre", txtNombre, listBox, "@NombreBuscado", "Nombre");
-
         }
         private void txtProveedor_TextChanged(object sender, EventArgs e)
         {
@@ -122,6 +122,10 @@ namespace StockController.Forms
                 // Depuración: Muestra un mensaje si no se pudo determinar el TextBox correspondiente
                 MessageBox.Show("No se pudo determinar el TextBox correspondiente.");
             }
+        }
+        private void txtFecha_Click(object sender, EventArgs e)
+        {
+            campoSeleccionado = txtFecha;
         }
 
         //Metodos
@@ -168,20 +172,36 @@ namespace StockController.Forms
         }
         private bool Eliminar()
         {
-            if (IdMateriasPrimas > 0)
+            try
             {
-                DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar esta materia prima?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (IdMateriasPrimas > 0)
+                {
+                    DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar esta materia prima?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (resultado == DialogResult.Yes)
-                    return MateriasPrimas.Eliminar(IdMateriasPrimas);
+                    if (resultado == DialogResult.Yes)
+                        return MateriasPrimas.Eliminar(IdMateriasPrimas);
+                    else
+                        return false;
+                }
                 else
+                {
+                    MessageBox.Show("Selecciona una materia prima antes de eliminar.", "Materia prima no seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
+                }
             }
-            else
+            catch (System.Data.SqlClient.SqlException )
             {
-                MessageBox.Show("Selecciona una materia prima antes de eliminar.", "Materia prima no seleccionada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se puede eliminar esta materia prima porque tiene registros relacionados en la tabla de Productos.", "Error de eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return false;
             }
+            catch (Exception )
+            {
+                // Mensaje genérico para otras excepciones
+                MessageBox.Show($"Se produjo un error al intentar eliminar la amteria prima. Consulta los detalles en la consola.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
         }
         private void Finalizar()
         {
@@ -212,6 +232,15 @@ namespace StockController.Forms
         private void MostrarFechaActual()
         {
             txtFecha.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }
+        private System.Windows.Forms.TextBox campoSeleccionado;
+        private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            DateTime fechaSeleccionada = monthCalendar.SelectionStart;
+
+            if (campoSeleccionado == txtFecha)
+                txtFecha.Text = fechaSeleccionada.ToString("yyyy-MM-dd");
+
         }
         private void ListarTodo()
         {
@@ -291,6 +320,14 @@ namespace StockController.Forms
                         dgvMateriasPrimas.Columns["fecha_compra"].HeaderText = "Fecha";
                         DbDatos.OcultarIds(dgvMateriasPrimas);
                     }
+                    else if (columna.Name == "Comentarios")
+                    {
+                        // Configurar la columna "Comentarios"
+                        //columna.HeaderText = "Comentarios";  // Puedes personalizar el encabezado
+                        columna.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                        columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
+                        columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    }
                 }
             }
         }   
@@ -316,10 +353,10 @@ namespace StockController.Forms
             else
                 this.Hide();
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnMateriasPrimas_Click(object sender, EventArgs e)
         {
-
+            FMateriasPrimas formmateriasprimas = new FMateriasPrimas();
+            formmateriasprimas.Show();
         }
     }
 }

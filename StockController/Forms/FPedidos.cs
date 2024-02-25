@@ -19,8 +19,8 @@ namespace StockController.Forms
 
         private void Pedidos_Load(object sender, EventArgs e)
         {
+            //Listar()
             ListarTodo();
-            //MostrarFechaActual();
         }
 
         bool Editar;
@@ -110,8 +110,8 @@ namespace StockController.Forms
         private DateTime fechaSeleccionada;
         private System.Windows.Forms.TextBox ultimoTextBoxModificado = null;
         private void txtFechaRecibido_Click(object sender, EventArgs e)
-        {
-            campoSeleccionado = txtFechaRecibido;
+        {            
+            campoSeleccionado = txtFechaRecibido;            
         }
 
         private void txtFechaEntrega_Click(object sender, EventArgs e)
@@ -182,9 +182,9 @@ namespace StockController.Forms
         private void Finalizar()
         {
             ListarTodo();
-            Linpiar();
+            Limpiar();
         }
-        private void Linpiar()
+        private void Limpiar()
         {
             txtCliente.Text = "";
             txtAnotaciones.Text = "";
@@ -204,20 +204,23 @@ namespace StockController.Forms
             }
             return true;
         }
-        private void MostrarFechaActual()
+        private void Listar()
         {
-            txtFechaRecibido.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+            dgvPedidos.DataSource = Pedidos.ListarTodo();
+            DbDatos.OcultarIds(dgvPedidos);
+            PersonalizarColumnasGrid();
         }
         private void ListarTodo()
         {
             dgvPedidos.DataSource = Pedidos.ListarTodo();
-            DbDatos.OcultarIds(dgvPedidos);
+            //DbDatos.OcultarIds(dgvPedidos);
             PersonalizarColumnasGrid();
         }
         private void ToUpperText()//El upperText para los comboBox esta en comboBox_TextChanged
         {
             txtCliente.CharacterCasing = CharacterCasing.Upper;
-            txtCliente.Click += TextBox_Click;            
+            txtCliente.Click += TextBox_Click;
             txtAnotaciones.CharacterCasing = CharacterCasing.Upper;
             txtAnotaciones.Click += TextBox_Click;
         }
@@ -253,6 +256,7 @@ namespace StockController.Forms
                         dgvPedidos.Columns["fecha_entrega"].HeaderText = "Fecha Entrega";
                         DbDatos.OcultarIds(dgvPedidos);
                     }
+                    
                 }
             }
         }

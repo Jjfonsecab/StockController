@@ -31,7 +31,7 @@ namespace StockController.Forms
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos(txtNombre, txtReferencia,txtPrecio, txtCantidad, txtDescripcion, txtTiempo))
+            if (!ValidarCampos(txtNombre, txtReferencia,txtPrecio, txtDescripcion, txtTiempo))
                 return;
             if (Modificar)
             {
@@ -64,16 +64,11 @@ namespace StockController.Forms
         {
             FormatoPunto(txtPrecio, e);
         }
-        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            FormatoPunto(txtCantidad, e);
-        }
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IdProductos = Convert.ToInt32(dgvProductos.CurrentRow.Cells["id_producto"].Value);
             txtNombre.Text = dgvProductos.CurrentRow.Cells["Nombre"].Value.ToString();
             txtPrecio.Text = dgvProductos.CurrentRow.Cells["Precio_final"].Value.ToString();
-            txtCantidad.Text = dgvProductos.CurrentRow.Cells["Cantidad"].Value.ToString();
             txtDescripcion.Text = dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString();
             txtTiempo.Text = dgvProductos.CurrentRow.Cells["tiempo_produccion"].Value.ToString();
 
@@ -132,7 +127,6 @@ namespace StockController.Forms
                 Nombre = txtNombre.Text,
                 Referencia = txtReferencia.Text,
                 Precio = Convert.ToDecimal(txtPrecio.Text),
-                Cantidad = Convert.ToInt32(txtCantidad.Text),
                 Descripcion = txtDescripcion.Text,
                 TiempoProduccion = txtTiempo.Text,
                 IdProducto = IdProductos
@@ -152,7 +146,6 @@ namespace StockController.Forms
                     Nombre = txtNombre.Text,
                     Referencia = txtReferencia.Text,
                     Precio = Convert.ToDecimal(txtPrecio.Text),
-                    Cantidad = Convert.ToInt32(txtCantidad.Text),
                     Descripcion = txtDescripcion.Text,
                     TiempoProduccion = txtTiempo.Text
                 };
@@ -168,31 +161,46 @@ namespace StockController.Forms
         }
         private bool Eliminar()
         {
-            if (IdProductos > 0)
+            try
             {
-                DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este Producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (IdProductos > 0)
+                {
+                    DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este Producto?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (resultado == DialogResult.Yes)
-                    return Productos.Eliminar(IdProductos);
+                    if (resultado == DialogResult.Yes)
+                        return Productos.Eliminar(IdProductos);
+                    else
+                        return false;
+                }
                 else
+                {
+                    MessageBox.Show("Selecciona un Producto antes de eliminar.", "Producto no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
+                }
             }
-            else
+            catch (System.Data.SqlClient.SqlException ex)
             {
-                MessageBox.Show("Selecciona un Producto antes de eliminar.", "Producto no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se puede eliminar este Producto porque tiene registros relacionados en la tabla de Pedidos.", "Error de eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return false;
             }
+            catch (Exception exc)
+            {
+                // Mensaje genérico para otras excepciones
+                MessageBox.Show($"Se produjo un error al intentar eliminar el producto. Consulta los detalles en la consola.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            
         }
         private void Finalizar()
         {
             ListarTodo();
-            Linpiar();
+            Limpiar();
         }
-        private void Linpiar()
+        private void Limpiar()
         {
             txtNombre.Text = "";
             txtPrecio.Text = "";
-            txtCantidad.Text = "";
             txtDescripcion.Text = "";
             txtTiempo.Text = "";
             Editar = false;
@@ -223,8 +231,6 @@ namespace StockController.Forms
             txtReferencia.Click += TextBox_Click;
             txtPrecio.CharacterCasing = CharacterCasing.Upper;
             txtPrecio.Click += TextBox_Click;
-            txtCantidad.CharacterCasing = CharacterCasing.Upper;
-            txtCantidad.Click += TextBox_Click;
             txtTiempo.CharacterCasing = CharacterCasing.Upper;
             txtTiempo.Click += TextBox_Click;
             txtDescripcion.CharacterCasing = CharacterCasing.Upper;
@@ -293,6 +299,14 @@ namespace StockController.Forms
                         estiloCeldaNumerica.Format = "N0";
                         columna.DefaultCellStyle = estiloCeldaNumerica;
                         DbDatos.OcultarIds(dgvProductos);
+                    }
+                    else if (columna.Name == "Descripcion")
+                    {
+                        // Configurar la columna "Comentarios"
+                        //columna.HeaderText = "Comentarios";  // Puedes personalizar el encabezado
+                        columna.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                        columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
+                        columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     }
                     else if (columna.Name == "tiempo_produccion")
                     {
